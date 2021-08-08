@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/IrvingJuarez/weatherApp/issues"
   },
-  "homepage": "https://github.com/IrvingJuarez/weatherApp#readme"
+  "homepage": "https://github.com/IrvingJuarez/weatherApp#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0"
+  }
 }
