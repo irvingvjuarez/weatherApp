@@ -1,0 +1,24 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "A web app to know the weather in real time all over the world.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IrvingJuarez/weatherApp.git"
+  },
+  "keywords": [
+    "React",
+    "WeatherApp",
+    "JavaScript"
+  ],
+  "author": "Irving Juárez <irvingjuarez274@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IrvingJuarez/weatherApp/issues"
+  },
+  "homepage": "https://github.com/IrvingJuarez/weatherApp#readme"
+}
