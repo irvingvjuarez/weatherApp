@@ -16,6 +16,24 @@ class InputField extends React.Component{
         this.setState({
             search: true
         })
+
+        setTimeout(() => {
+            let input = document.querySelector(".header__input")
+            input.focus()
+            this.focus(input)
+        }, 250)
+    }
+
+    focus = (input) => {
+        setTimeout(() => {
+            if(input === document.activeElement){
+                this.focus(input)
+            }else{
+                this.setState({
+                    search: false
+                })
+            }
+        }, 1000)
     }
 
     render(){
