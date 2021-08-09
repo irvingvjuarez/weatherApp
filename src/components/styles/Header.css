@@ -1,0 +1,78 @@
+header{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 45px;
+    padding: 0 9px;
+    color: white;
+    
+    background-color: var(--primaryColor);
+}
+header h3{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mainFont);
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+header button{
+    width: 22px;
+    height: 22px;
+    border: 1px solid black;
+}
+.header__navbar ul{
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: var(--secondFont);
+    font-weight: 500;
+    font-size: 1.6rem;
+}
+.header__navbar li{
+    margin-right: 9px;
+    font-size: 2rem;
+    list-style: none;
+}
+header button img{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (min-width: 750px){
+    header{
+        height: 55px;
+        padding: 0 18px;
+    }
+    .header__navbar li{
+        font-size: 1.6rem;
+    }
+    header h3{
+        font-size: 1.6rem;
+    }
+    .header__hamburgerButton{
+        display: none;
+    }
+    .header__navbar ul{
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    header{
+        height: 67px;
+    }
+    .header__navbar li{
+        margin-right: 18px;
+        font-size: 2rem;
+    }
+    header h3{
+        font-size: 1.8rem;
+    }
+    header button{
+        width: 30px;
+        height: 30px;
+    }
+}
