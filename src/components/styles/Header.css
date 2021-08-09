@@ -7,6 +7,7 @@ header{
     height: 45px;
     padding: 0 9px;
     color: white;
+    overflow-x: hidden;
     
     background-color: var(--primaryColor);
 }
@@ -21,20 +22,6 @@ header h3{
 header button{
     width: 22px;
     height: 22px;
-    border: 1px solid black;
-}
-.header__navbar ul{
-    display: none;
-    align-items: center;
-    justify-content: flex-start;
-    font-family: var(--secondFont);
-    font-weight: 500;
-    font-size: 1.6rem;
-}
-.header__navbar li{
-    margin-right: 9px;
-    font-size: 2rem;
-    list-style: none;
 }
 header button img{
     width: 100%;
@@ -46,17 +33,14 @@ header button img{
         height: 55px;
         padding: 0 18px;
     }
-    .header__navbar li{
-        font-size: 1.6rem;
-    }
     header h3{
         font-size: 1.6rem;
     }
     .header__hamburgerButton{
         display: none;
     }
-    .header__navbar ul{
-        display: flex;
+    .header__closeButton{
+        display: none;
     }
 }
 

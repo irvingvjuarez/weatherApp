@@ -5,16 +5,12 @@ class HeaderButton extends React.Component{
         super(props)
     }
 
-    touched = () => {
-        alert("Hi")
-    }
-
     render(){
         const { specificClassName, description, imgUrl, action } = this.props
 
         return (
             <button className={`resetButton ${specificClassName}`}>
-                <img src={ imgUrl } alt={ description } onClick={ this.touched } />
+                <img src={ imgUrl } alt={ description } onClick={ action } />
             </button>
         )
     }
