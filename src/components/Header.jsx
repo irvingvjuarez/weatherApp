@@ -1,21 +1,12 @@
 import React from "react"
-import ReactDOM from "react-dom"
 import Navbar from "./Navbar"
-import HeaderButton from "./HeaderButton"
+import InputField from "./InputField"
 
-import css from "./styles/Header.css"
-import searchIcon from "../assets/icons/magnifying-glass.svg"
+import "./styles/Header.css"
 
 class Header extends React.Component{
     constructor(props){
         super(props)
-        this.state = {
-            sidebar: false
-        }
-    }
-
-    searchButtonAction = () => {
-        alert("Search button pushed")
     }
 
     render(){
@@ -25,12 +16,7 @@ class Header extends React.Component{
 
                 <h3 className="header__cityName">Mexico City</h3>
 
-                <HeaderButton 
-                    specificClassName="header__searchButton" 
-                    description="Search button" 
-                    imgUrl={searchIcon} 
-                    action={ this.searchButtonAction }
-                />
+                <InputField />
             </header>
         )
     }
