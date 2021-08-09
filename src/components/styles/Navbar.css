@@ -14,7 +14,7 @@
 .nav__ul-mobile{
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -23,11 +23,18 @@
     height: 100vh;
     padding: 0 9px;
     background-color: rgba(255,255,255,0.9);
+    border-radius: 0 5px 5px 0;
     font-size: 1.6rem;
     color: var(--primaryColor);
-
+    
     transition: left 1s;
 }
+.open{
+    left: 0;
+}
+/* .close{
+    left: -100%;
+} */
 .header__navbar li{
     margin: 9px 0;
     font-size: 2rem;
