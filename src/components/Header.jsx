@@ -1,5 +1,9 @@
 import React from "react"
+import HeaderButton from "./HeaderButton"
+
 import css from "./styles/Header.css"
+import hamburgerIcon from "../assets/icons/hamburgerButton.svg"
+import searchIcon from "../assets/icons/magnifying-glass.svg"
 
 class Header extends React.Component{
     constructor(props){
@@ -11,10 +15,8 @@ class Header extends React.Component{
             <header>
 
                 <nav className="header__navbar">
-                    <button className="header__hamburgerButton resetButton">
-                        <img src="./assets/icons/hamburgerButton.svg" alt="Hamburger button" />
-                    </button>
-                    
+                    <HeaderButton specificClassName="header__hamburgerButton" description="Hamburger button" imgUrl={hamburgerIcon} />
+
                     <ul>
                         <li>Home</li>
                         <li>About</li>
@@ -24,9 +26,7 @@ class Header extends React.Component{
 
                 <h3 className="header__cityName">Mexico City</h3>
 
-                <button className="header__searchButton resetButton">
-                    <img src="./assets/icons/magnifying-glass.svg" alt="Search button" />
-                </button>
+                <HeaderButton specificClassName="header__searchButton" description="Search button" imgUrl={searchIcon} />
             </header>
         )
     }
