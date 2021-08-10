@@ -1,5 +1,6 @@
 import React from "react"
 import Loader from "../components/Loader"
+import Map from "../components/Map"
 
 class Home extends React.Component{
     constructor(props){
@@ -8,15 +9,15 @@ class Home extends React.Component{
 
     
     render(){
-        const { location } = this.props
+        const { data } = this.props
 
-        if(location === ""){
+        if(data.name === ""){
             return(
                 <Loader />
             )
         }else{
             return (
-                <h2>{ location }</h2>
+                <Map lat={data.coord.lat} lon={data.coord.lon}/>
             )
         }
     }

@@ -45,12 +45,14 @@ class App extends React.Component{
     }
 
     render(){
+        const { name } = this.state.data
+
         return(
             <BrowserRouter>
-                <Layout location={this.state.data.name}>
+                <Layout location={name}>
                     <Switch>
                         <Route exact path="/" render={(props) => (
-                            <Home location={this.state.data.name}/>
+                            <Home data={this.state.data}/>
                         )}/>
                         <Route exact path="/about" component={About}/>
                         <Route exact path="/contact" component={Contact}/>
