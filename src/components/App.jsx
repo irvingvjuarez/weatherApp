@@ -1,17 +1,28 @@
 import React from "react"
-import css from "./styles/App.css"
-import Header from "./Header"
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 
-class App extends React.Component{
-    constructor(props){
-        super(props)
-    }
+import Layout from "./Layout"
+import Home from "../pages/Home"
+import About from "../pages/About"
+import Contact from "../pages/Contact"
+import Weather from "../pages/Weather"
+import NotFound from "../pages/NotFound"
+import "./styles/App.css"
 
-    render(){
-        return (
-            <Header />
-        )
-    }
+function App(){
+    return(
+        <BrowserRouter>
+            <Layout>
+                <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/about" component={About}/>
+                    <Route exact path="/contact" component={Contact}/>
+                    <Route exact path="/weather-info" component={Weather}/>
+                    <Route component={NotFound}/>
+                </Switch>
+            </Layout>
+        </BrowserRouter>
+    )
 }
 
 export default App

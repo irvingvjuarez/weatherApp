@@ -25,16 +25,15 @@
     background-color: rgba(255,255,255,0.9);
     border-radius: 0 5px 5px 0;
     font-size: 1.6rem;
-    color: var(--primaryColor);
     
     transition: left 1s;
+}
+.nav__ul-mobile a{
+    color: var(--primaryColor);
 }
 .open{
     left: 0;
 }
-/* .close{
-    left: -100%;
-} */
 .header__navbar li{
     margin: 9px 0;
     font-size: 2rem;
@@ -43,10 +42,16 @@
 .nav__ul-desktop{
     display: none;
 }
+a{
+    text-decoration: none;
+}
 
 @media screen and (min-width: 750px){
     .nav__ul-desktop{
         display: flex;
+    }
+    .nav__ul-desktop a{
+        color: white;
     }
     .header__navbar li{
         margin-right: 9px;

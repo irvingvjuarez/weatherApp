@@ -1,9 +1,10 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import HeaderButton from "./HeaderButton"
 
 import closedIcon from "../assets/icons/cancel.svg"
 import hamburgerIcon from "../assets/icons/hamburgerButton.svg"
-import css from "./styles/Navbar.css"
+import "./styles/Navbar.css"
 
 class Sidebar extends React.Component{
     constructor(props){
@@ -39,10 +40,10 @@ class Sidebar extends React.Component{
                         action={ this.closeSidebar }
                     />
                 </div>
-                <li>Map</li>
-                <li>Weather data</li>
-                <li>About</li>
-                <li>Contact</li>
+                <li><Link to="/">Map</Link></li>
+                <li><Link to="/weather-info">Weather data</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
             </ul>
         )
     }
@@ -59,9 +60,9 @@ class Sidebar extends React.Component{
         }else{
             return(
                 <ul className="nav__ul-desktop">
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
                 </ul>
             )
         }
