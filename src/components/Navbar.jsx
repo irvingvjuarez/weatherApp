@@ -17,6 +17,14 @@ class Sidebar extends React.Component{
         this.closeSidebar = this.closeSidebar.bind(this);
     }
 
+    componentDidUpdate = () => {
+        let links = [...document.querySelectorAll("a")]
+        links.map(link => {
+            link.addEventListener("click", this.closeSidebar)
+            console.log("Hi")
+        })
+    }
+
     openSidebar = () => {
         this.setState({
             sidebar: "true"
