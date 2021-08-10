@@ -1,4 +1,17 @@
 .map-container{
     width: 100%;
-    height: 90%;
+    height: calc(100% - 45px);
+    z-index: 0;
+}
+
+@media screen and (min-width: 750px){
+    .map-container{
+        height: calc(100% - 55px);
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .map-container{
+        height: calc(100% - 67px);
+    }
 }
