@@ -14,7 +14,7 @@ class Header extends React.Component{
             <header>
                 <Navbar />
 
-                <h3 className="header__cityName">Mexico City</h3>
+                <h3 className="header__cityName">{ this.props.location }</h3>
 
                 <InputField />
             </header>

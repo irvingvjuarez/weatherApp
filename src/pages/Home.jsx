@@ -7,7 +7,7 @@ class Home extends React.Component{
 
     render(){
         return (
-            <h2>Home</h2>
+            <h2>{this.props.location}</h2>
         )
     }
 }

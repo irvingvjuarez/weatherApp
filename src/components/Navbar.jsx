@@ -21,7 +21,6 @@ class Sidebar extends React.Component{
         let links = [...document.querySelectorAll("a")]
         links.map(link => {
             link.addEventListener("click", this.closeSidebar)
-            console.log("Hi")
         })
     }
 

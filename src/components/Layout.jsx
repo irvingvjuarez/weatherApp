@@ -4,7 +4,7 @@ import Header from "./Header"
 function Layout(props){
     return(
         <React.Fragment>
-            <Header/>
+            <Header location={props.location}/>
             {props.children}
         </React.Fragment>
     )
