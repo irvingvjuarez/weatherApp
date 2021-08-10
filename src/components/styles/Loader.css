@@ -1,0 +1,10 @@
+.loading-field{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+}
+.loading-field img{
+    width: 125px;
+}
