@@ -12,12 +12,18 @@ header{
     background-color: var(--primaryColor);
 }
 header h3{
+    display: inline-block;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    width:60%;
     font-family: var(--mainFont);
     font-size: 1.6rem;
     font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
 }
 header button{
     width: 22px;
@@ -34,6 +40,7 @@ header button img{
         padding: 0 18px;
     }
     header h3{
+        width: 40%;
         font-size: 1.6rem;
     }
     .header__hamburgerButton{
