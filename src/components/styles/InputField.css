@@ -1,14 +1,21 @@
 .header__input-field{
     position: relative;
+    z-index: 2;
+    transition: padding 1s;
+}
+.short{
+    height: fit-content;
+    width: auto;
+}
+.large{
+    height: 60%;
+    width: 87%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 87%;
-    height: 60%;
     padding: 0 9px;
     border-radius: 15px;
     background-color: #32688B;
-    z-index: 2;
 }
 .header__inputButton{
     width: 15px;
@@ -34,7 +41,7 @@
 }
 
 @media screen and (min-width: 750px){
-    .header__input-field{
+    .large{
         width: 70%;
     }
     .header__input{
@@ -43,7 +50,7 @@
 }
 
 @media screen and (min-width: 1000px){
-    .header__input-field{
+    .large{
         width: 350px;
     }
     .header__input{

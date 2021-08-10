@@ -39,7 +39,7 @@ class InputField extends React.Component{
     render(){
         if(this.state.search){
             return(
-                <div className="header__input-field">
+                <div className="header__input-field large">
                     <HeaderButton 
                         specificClassName="header__inputButton" 
                         description="Search button" 
@@ -51,12 +51,14 @@ class InputField extends React.Component{
             )
         }else{
             return(
-                <HeaderButton 
-                    specificClassName="header__searchButton" 
-                    description="Search button" 
-                    imgUrl={searchIcon} 
-                    action={ this.searchOpen }
-                />
+                <div className="header__input-field">
+                    <HeaderButton 
+                        specificClassName="header__searchButton" 
+                        description="Search button" 
+                        imgUrl={searchIcon} 
+                        action={ this.searchOpen }
+                    />
+                </div>
             )
         }
     }
