@@ -9,12 +9,20 @@ class Header extends React.Component{
         super(props)
     }
 
+    renderTitle(){
+        if(!this.props.component.state.loading){
+            return (
+                <h3 className="header__cityName">{ this.props.location }</h3>
+            )
+        }
+    }
+
     render(){
         return(
             <header>
                 <Navbar />
 
-                <h3 className="header__cityName">{ this.props.location }</h3>
+                {this.renderTitle()}
 
                 <InputField component={this.props.component} />
             </header>

@@ -7,19 +7,20 @@ class Home extends React.Component{
         super(props)
     }
 
-    componentDidMount(){
-        this.props.data.name = ""
+    componentDidUpdate(){
+        console.log(this.props.component.state.data.coord.lat)
+        console.log(this.props.component.state.data.coord.lon)
     }
     
     render(){
-        const { data } = this.props
+        const { data, loading, error } = this.props.component.state
 
-        if(data.name === ""){
+        if(loading){
             return(
                 <Loader />
             )
         }else{
-            return (
+            return(
                 <Map lat={data.coord.lat} lon={data.coord.lon}/>
             )
         }

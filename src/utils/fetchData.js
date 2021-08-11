@@ -6,6 +6,7 @@ const getData = async(API, component) => {
 
         if(component){
             component.setState({
+                loading: false,
                 data: data
             })
         }else{
@@ -13,6 +14,11 @@ const getData = async(API, component) => {
         }
     }catch(error){
         console.log(`Fetch error: ${error}`)
+
+        component.setState({
+            loading: false,
+            error: error
+        })
     }
 }
 

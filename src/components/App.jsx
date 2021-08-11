@@ -15,6 +15,8 @@ class App extends React.Component{
     constructor(props){
         super(props)
         this.state = {
+            loading: true,
+            error: null,
             data: {
                 name: "",
                 coord: {}
@@ -34,7 +36,7 @@ class App extends React.Component{
                 <Layout location={name} component={this} >
                     <Switch>
                         <Route exact path="/" render={(props) => (
-                            <Home data={this.state.data}/>
+                            <Home component={this}/>
                         )}/>
                         <Route exact path="/about" component={About}/>
                         <Route exact path="/contact" component={Contact}/>
