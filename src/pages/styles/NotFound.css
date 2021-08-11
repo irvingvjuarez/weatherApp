@@ -13,5 +13,5 @@
     padding: 9px;
     border-radius: 15px;
     font-family: var(--mainFont);
-    background-color: var(--contrastColor);
+    background-color: var(--secondaryColor);
 }

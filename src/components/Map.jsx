@@ -19,9 +19,9 @@ class Map extends React.Component{
     componentDidUpdate(){
         var map = new mapboxgl.Map({
             container: 'map', // container ID
-            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+            style: 'mapbox://styles/ivjc/navigation-night-v1', // style URL
             center: [`${this.props.lon}`, `${this.props.lat}`], // starting position [lng, lat]
-            zoom: 14 // starting zoom
+            zoom: 14,  // starting zoom
         });
     }
 

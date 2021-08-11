@@ -36,12 +36,12 @@ class App extends React.Component{
                 <Layout location={name} component={this} >
                     <Switch>
                         <Route exact path="/" render={(props) => (
-                            <Home component={this}/>
+                            <Home component={this} />
                         )}/>
-                        <Route exact path="/about" component={About}/>
-                        <Route exact path="/contact" component={Contact}/>
-                        <Route exact path="/weather-info" component={Weather}/>
-                        <Route component={NotFound}/>
+                        <Route path="/contact" component={Contact} />
+                        <Route path="/about" component={About} />
+                        <Route path="/weather-info" component={Weather} />
+                        <Route component={NotFound} />
                     </Switch>
                 </Layout>
             </BrowserRouter>
