@@ -16,7 +16,7 @@ class Header extends React.Component{
 
                 <h3 className="header__cityName">{ this.props.location }</h3>
 
-                <InputField />
+                <InputField component={this.props.component} />
             </header>
         )
     }

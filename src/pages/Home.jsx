@@ -7,6 +7,9 @@ class Home extends React.Component{
         super(props)
     }
 
+    componentDidMount(){
+        this.props.data.name = ""
+    }
     
     render(){
         const { data } = this.props

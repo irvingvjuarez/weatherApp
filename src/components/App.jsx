@@ -16,7 +16,8 @@ class App extends React.Component{
         super(props)
         this.state = {
             data: {
-                name: ""
+                name: "",
+                coord: {}
             }
         }
     }
@@ -30,7 +31,7 @@ class App extends React.Component{
 
         return(
             <BrowserRouter>
-                <Layout location={name}>
+                <Layout location={name} component={this} >
                     <Switch>
                         <Route exact path="/" render={(props) => (
                             <Home data={this.state.data}/>

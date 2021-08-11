@@ -1,8 +1,11 @@
 import React from "react"
 import HeaderButton from "./HeaderButton"
+import App from "./App"
 
 import "./styles/InputField.css"
 import searchIcon from "../assets/icons/magnifying-glass.svg"
+
+import fetchData from "../utils/fetchData"
 
 class InputField extends React.Component{
     constructor(props){
@@ -38,7 +41,7 @@ class InputField extends React.Component{
 
     enterListener = e => {
         if(e.keyCode === 13){
-            console.log("Hi")
+            fetchData(this.props.component, e.target.value)
         }
     }
 

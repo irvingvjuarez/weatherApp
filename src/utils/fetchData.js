@@ -1,24 +1,58 @@
-const getData = async(lat, lon, component) => {
+const getData = async(API, component) => {
+
     try{
-        let weatherApi = process.env.WeatherAPI.replace("LAT", lat)
-        weatherApi = weatherApi.replace("LON", lon)
-        let response = await fetch(weatherApi)
+        let response = await fetch(API)
         let data = await response.json()
-        component.setState({
-            data: data
-        })
+
+        if(component){
+            component.setState({
+                data: data
+            })
+        }else{
+            return await data
+        }
     }catch(error){
         console.log(`Fetch error: ${error}`)
     }
 }
 
-const fetchData = (component) => {
-    let location = navigator.geolocation.getCurrentPosition(position => {
-        let lon = position.coords.longitude
-        let lat = position.coords.latitude
-    
-        getData(lat, lon, component)
-    })
+const getApi = (name) => {
+    let regex = /\s/
+    name = name.replace(regex, "%20")
+    let API = process.env.WeatherAPIName.replace("NAME", name)
+
+    return API
+}
+
+const requestData = (lat, lon, component, name) => {
+    let API
+
+    if(name){
+        API = getApi(name)
+    }else{
+        API = process.env.WeatherAPICoor.replace("LAT", lat)
+        API = API.replace("LON", lon)
+    }
+
+    getData(API, component)
+}
+
+const fetchData = async (component, name) => {
+
+    if(name){
+        let API = getApi(name)
+        let data = await getData(API)
+        requestData(data.coord.lat, data.coord.lon, component)
+    }else{
+        let location = navigator.geolocation.getCurrentPosition(position => {
+            let lon = position.coords.longitude
+            let lat = position.coords.latitude
+        
+            requestData(lat, lon, component)
+        })
+    }
+
+
 }
 
 export default fetchData
