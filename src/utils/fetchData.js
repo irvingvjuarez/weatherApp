@@ -4,17 +4,15 @@ const getData = async(API, component) => {
         let response = await fetch(API)
         let data = await response.json()
 
-        if(component){
-            component.setState({
-                loading: false,
-                data: data
-            })
-        }else{
+        if(!component){
             return await data
         }
+        
+        component.setState({
+            loading: false,
+            data: data
+        })
     }catch(error){
-        console.log(`Fetch error: ${error}`)
-
         component.setState({
             loading: false,
             error: error

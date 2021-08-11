@@ -1,4 +1,8 @@
 import React from "react"
+import { Link } from "react-router-dom"
+import "./styles/NotFound.css"
+
+import image404 from "../assets/images/404.jpg"
 
 class NotFound extends React.Component{
     constructor(props){
@@ -7,7 +11,10 @@ class NotFound extends React.Component{
 
     render(){
         return(
-            <h2>Error 404</h2>
+            <div className="error404-container">
+                <img src={image404} alt="Error 404 image" />
+                <Link className="return-btn" to="/">Go to home</Link>
+            </div>
         )
     }
 }

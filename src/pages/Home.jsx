@@ -14,6 +14,10 @@ class Home extends React.Component{
             return(
                 <Loader />
             )
+        }else if(error){
+            return(
+                <h3>Error: {error.message}</h3>
+            )
         }else{
             return(
                 <Map lat={data.coord.lat} lon={data.coord.lon}/>

@@ -18,10 +18,14 @@ class Sidebar extends React.Component{
     }
 
     componentDidUpdate = () => {
-        let links = [...document.querySelectorAll("a")]
-        links.map(link => {
-            link.addEventListener("click", this.closeSidebar)
-        })
+        let list = document.querySelector("ul")
+        if(list.classList.contains("nav__ul-mobile")){
+            let links = [...document.querySelectorAll("a")]
+            links.map(link => {
+                link.addEventListener("click", this.closeSidebar)
+            })
+        }
+
     }
 
     openSidebar = () => {

@@ -47,6 +47,9 @@ a{
 }
 
 @media screen and (min-width: 750px){
+    .nav__ul-mobile{
+        display: none;
+    }
     .nav__ul-desktop{
         display: flex;
     }
