@@ -12,7 +12,7 @@ class Map extends React.Component{
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v11', // style URL
             center: [`${this.props.lon}`, `${this.props.lat}`], // starting position [lng, lat]
-            zoom: 5 // starting zoom
+            zoom: 16 // starting zoom
         });
     }
 

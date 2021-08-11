@@ -23,7 +23,6 @@
     margin-right: 9px;
 }
 .header__input{
-    width: 90%;
     height: 100%;
     border:none;
     color: white;
@@ -31,6 +30,12 @@
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+}
+.input-display{
+    width: 90%;
+}
+.input-hidden{
+    width: 0px;
 }
 .header__input::placeholder{
     color: white;

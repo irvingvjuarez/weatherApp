@@ -11,17 +11,17 @@ class InputField extends React.Component{
             search: null
         }
     }
-
+    
     searchOpen = () => {
         this.setState({
             search: true
         })
 
-        setTimeout(() => {
-            let input = document.querySelector(".header__input")
-            input.focus()
-            this.focus(input)
-        }, 250)
+        let input = document.querySelector(".header__input")
+        input.addEventListener("keyup", this.enterListener)
+    
+        input.focus()
+        this.focus(input)
     }
 
     focus = (input) => {
@@ -36,6 +36,12 @@ class InputField extends React.Component{
         }, 1000)
     }
 
+    enterListener = e => {
+        if(e.keyCode === 13){
+            console.log("Hi")
+        }
+    }
+
     render(){
         if(this.state.search){
             return(
@@ -46,7 +52,7 @@ class InputField extends React.Component{
                         imgUrl={searchIcon} 
                         action={ this.searchOpen }
                     />
-                    <input type="text" className="header__input" placeholder="Search a city"/>
+                    <input type="text" className="header__input input-display" placeholder="Search a city" />
                 </div>
             )
         }else{
@@ -58,6 +64,7 @@ class InputField extends React.Component{
                         imgUrl={searchIcon} 
                         action={ this.searchOpen }
                     />
+                    <input type="text" className="header__input input-hidden"/>
                 </div>
             )
         }

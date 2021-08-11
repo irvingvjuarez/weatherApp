@@ -9,6 +9,8 @@ import Weather from "../pages/Weather"
 import NotFound from "../pages/NotFound"
 import "./styles/App.css"
 
+import fetchData from "../utils/fetchData"
+
 class App extends React.Component{
     constructor(props){
         super(props)
@@ -20,30 +22,7 @@ class App extends React.Component{
     }
 
     componentDidMount(){
-        this.fetchData()
-    }
-
-    fetchData = () => {
-        let location = navigator.geolocation.getCurrentPosition(position => {
-            let lon = position.coords.longitude
-            let lat = position.coords.latitude
-        
-            this.getData(lat, lon)
-        })
-    }
-
-    getData = async(lat, lon) => {
-        try{
-            let weatherApi = process.env.WeatherAPI.replace("LAT", lat)
-            weatherApi = weatherApi.replace("LON", lon)
-            let response = await fetch(weatherApi)
-            let data = await response.json()
-            this.setState({
-                data: data
-            })
-        }catch(error){
-            console.log(`Fetch error: ${error}`)
-        }
+        fetchData(this)
     }
 
     render(){
