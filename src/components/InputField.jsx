@@ -1,6 +1,5 @@
 import React from "react"
 import HeaderButton from "./HeaderButton"
-import App from "./App"
 
 import "./styles/InputField.css"
 import searchIcon from "../assets/icons/magnifying-glass.svg"
@@ -41,7 +40,9 @@ class InputField extends React.Component{
 
     enterListener = e => {
         if(e.keyCode === 13){
+            e.target.blur()
             fetchData(this.props.component, e.target.value)
+            e.target.value = ""
         }
     }
 

@@ -6,11 +6,6 @@ class Home extends React.Component{
     constructor(props){
         super(props)
     }
-
-    componentDidUpdate(){
-        console.log(this.props.component.state.data.coord.lat)
-        console.log(this.props.component.state.data.coord.lon)
-    }
     
     render(){
         const { data, loading, error } = this.props.component.state
