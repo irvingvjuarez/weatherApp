@@ -1,4 +1,8 @@
 import React from "react"
+import mapboxgl from 'mapbox-gl';
+import LayersControl from "./LayersControl"
+
+import 'mapbox-gl/dist/mapbox-gl.css';
 import "./styles/Map.css"
 
 class Map extends React.Component{
@@ -14,12 +18,14 @@ class Map extends React.Component{
             center: [`${this.props.lon}`, `${this.props.lat}`], // starting position [lng, lat]
             zoom: 14 // starting zoom
         });
+
+        map.addControl(LayersControl, "bottom-right")
     }
 
     componentDidUpdate(){
         var map = new mapboxgl.Map({
             container: 'map', // container ID
-            style: 'mapbox://styles/ivjc/navigation-night-v1', // style URL
+            style: 'mapbox://styles/mapbox/streets-v11', // style URL
             center: [`${this.props.lon}`, `${this.props.lat}`], // starting position [lng, lat]
             zoom: 14,  // starting zoom
         });
