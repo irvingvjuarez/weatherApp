@@ -10,8 +10,10 @@ class BasicInfo extends React.Component{
         return(
             <section className="basic-info">
                 <article className="basic-info__sky-data">
-                    <span className="sky-data__logo">
-                    </span> <h3>Cloudly</h3>
+                    <div>
+                        <span className="sky-data__logo"></span> 
+                        <h3 className="sku-data__title">Cloudly</h3>
+                    </div>
 
                     <div className="basic-info__local-time">
                         <h3>Local time: </h3>

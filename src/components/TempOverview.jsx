@@ -11,10 +11,10 @@ class TempOverview extends React.Component{
             <section className="tempOverview">
                 <h2>15°</h2>
 
-                <article>
-                    <p>16.64°C</p>
+                <article className="tempOverview__minmax">
+                    <p className="max">16.64°C</p>
                     <hr />
-                    <p>13.97°C</p>
+                    <p className="min">13.97°C</p>
                 </article>
             </section>
         )

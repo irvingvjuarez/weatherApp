@@ -3,6 +3,8 @@ import BasicInfo from "../components/BasicInfo"
 import TempOverview from "../components/TempOverview"
 import Carousel from "../components/Carousel"
 
+import "./styles/Weather.css"
+
 class Weather extends React.Component{
     constructor(props){
         super(props)
@@ -10,15 +12,17 @@ class Weather extends React.Component{
 
     render(){
         return(
-            <section>
+            <section className="weather-main">
                 <article>
-                    <BasicInfo />
-                    <TempOverview />
-                    <Carousel />
-                </article>
+                    <div>
+                        <BasicInfo />
+                        <TempOverview />
+                        <Carousel />
+                    </div>
 
-                <article>
+                    <div>
 
+                    </div>
                 </article>
             </section>
         )

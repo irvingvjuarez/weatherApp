@@ -1,0 +1,56 @@
+.basic-info__sky-data{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 0 9px;
+    border-radius: 0 0 0 15px;
+    background-color: var(--contrastOne);
+    color: white;
+}
+.basic-info__sky-data > div{
+    display: flex;
+    align-items: center;
+}
+.sky-data__logo{
+    display: block;
+    width: 37px;
+    height: 22px;
+    border: 1px solid white;
+    margin-right: 9px;
+}
+.sku-data__title{
+    font-family: var(--mainFont);
+    font-weight: 400;
+    font-size: 2rem;
+}
+.basic-info__local-time{
+    position: absolute;
+    bottom: 0;
+    transform: translateY(120%);
+    color: black;
+}
+.basic-info__local-time > *{
+    margin-left: 6px;
+}
+.basic-info__local-time > h3{
+    font-family: var(--secondFont);
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 0;
+}
+.local-time__date{
+    font-family: var(--mainFont);
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+.local-time__time{
+    font-family: var(--secondFont);
+    font-weight: 300;
+    font-size: 1.6rem;
+}
+.basic-info__local-time img{
+    width: 18px;
+    height: 18px;
+}

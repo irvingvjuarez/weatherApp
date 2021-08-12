@@ -1,0 +1,21 @@
+.tempOverview{
+    display: flex;
+    align-items: flex-end;
+    margin: 0 auto;
+    color: var(--primaryColor);
+}
+.tempOverview > h2{
+    font-family: var(--thirdFont);
+    font-weight: 300;
+    font-size: 12rem;
+}
+.tempOverview__minmax{
+    font-family: var(--thirdFont);
+    font-size: 2rem;
+}
+.max{
+    font-weight: 400;
+}
+.min{
+    font-weight: 300;
+}
