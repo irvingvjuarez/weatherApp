@@ -1,7 +1,3 @@
-.button-img{
-    width: 100%;
-    height: 100%;
-}
 .layer-control-container{
     display: flex;
     align-items: center;
@@ -12,7 +8,7 @@
     padding: 6px;
     float: right;
     border-radius: 50%;
-    background: #fff;
+    background: rgba(255,255,255,0.9);
     clear: both;
     pointer-events: auto;
     transform: translate(0);
@@ -20,6 +16,10 @@
     border: 0px solid transparent;
     text-shadow: 0px 0px 0px transparent;
     cursor: pointer;
+}
+.layer-control-container .button-img{
+    width: 100%;
+    height: 100%;
 }
 .layer-control-container:focus{
     outline: 0;
@@ -31,11 +31,54 @@
 .mapboxgl-ctrl-attrib.mapboxgl-compact{
     display: none;
 }
+.layer-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: auto;
+    height: auto;
+    border-radius: 4px 4px 30px 30px;
+}
+.layer-menu .button-img{
+    display: none;
+}
+.list{
+    width: 100%;
+    list-style: none;
+    text-align: left;
+    font-family: var(--mainFont);
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.list li{
+    margin: 6px;
+    padding: 6px;
+}
+.close-button{
+    width: 80%;
+    height: 50px;
+    background-color: white;
+    border-radius: 4px;
+
+    background-position: left;
+    background-repeat: no-repeat;
+    background-image: url("../../assets/icons/fastForward.svg");
+}
 
 @media screen and (min-width: 750px){
     .layer-control-container{
         width: 50px;
         height: 50px;
+        padding: 9px;
+    }
+    .layer-menu{
+        width: auto;
+        height: auto;
+    }
+    .list{
+        font-size: 1.8rem;
+    }
+    .list li{
         padding: 9px;
     }
 }
