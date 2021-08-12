@@ -6,25 +6,20 @@ class MapboxGLButtonControl {
     constructor({
         className = "",
         title = "",
-        eventHandler = evtHndlr
     }) {
         this._className = className;
-        this._title = title;
-        this._eventHandler = eventHandler;
+        this._title = title
     }
 
     onAdd(map) {
         this._btn = document.createElement("button");
         this._btn.className = this._className
-        this._btn.type = "button";
         this._btn.title = this._title;
 
-        this._img = document.createElement("img")
-        this._img.onclick = this._eventHandler;
-        this._img.src="../assets/icons/layers.svg"
-        this._img.classList.add("button-img")
+        this._closeBtn = document.createElement("div")
+        this._closeBtn.className = "close-button hide"
 
-        this._btn.appendChild(this._img)
+        this._btn.appendChild(this._closeBtn)
 
         return this._btn;
     }
@@ -33,29 +28,6 @@ class MapboxGLButtonControl {
         this._container.parentNode.removeChild(this._container);
         this._map = undefined;
     }
-}
-
-function clickHandler(e){
-    let container = e.target.parentNode
-    container.classList.add("layer-menu")
-    container.innerHTML = `
-        <ul class="list">
-            <li>Temperature</li>
-            <li>Wind speed</li>
-            <li>Clouds</li>
-            <li>Precipitation</li>
-            <li>None</li>
-        </ul>
-        <div class="close-button">
-            <div class="close-button-img"></div>
-        </div>
-    `
-
-    let closeButton = document.querySelector(".close-button")
-    closeButton.addEventListener("touchmove", handleMovement)
-    closeButton.addEventListener("touchend", endTouch)
-    closeButton.addEventListener("mousedown", handleMouseMovement)
-    closeButton.addEventListener("mouseup", endTouch)
 }
 
 const endMouseMovemement = (e) => {
@@ -93,7 +65,11 @@ const endTouch = (e) => {
         children.map(item => {
             item.style.display = "none"
         })
-        // originalButton.style.zIndex = "1"
+
+        container.innerHTML = `
+            <img src="../assets/icons/layers.svg" class="button-img"/>
+        `
+
         container.classList.add("layer-control-container")
     }, 150)
 
@@ -102,8 +78,7 @@ const endTouch = (e) => {
 
 const LayersControl = new MapboxGLButtonControl({
     className: "layer-control-container",
-    title: "See layers",
-    eventHandler: clickHandler
+    title: "See layers"
 });
 
 export default LayersControl

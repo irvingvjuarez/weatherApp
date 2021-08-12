@@ -1,25 +1,48 @@
-.layer-control-container{
+.layer-control-container, .layer-menu{
     display: flex;
     align-items: center;
+    cursor: pointer;
+    margin: 0 10px 10px 0;
+    border: 0px solid transparent;
+    background: rgba(255,255,255,0.9);
+    float: right;
+    clear: both;
+    pointer-events: auto;
+}
+
+.layer-control-container{
     justify-content: center;
     width: 40px;
     height: 40px;
-    margin: 0 10px 10px 0;
     padding: 6px;
-    float: right;
     border-radius: 50%;
-    background: rgba(255,255,255,0.9);
-    clear: both;
-    pointer-events: auto;
-    transform: translate(0);
     box-shadow: 0 0 0 2px rgb(0 0 0 / 10%);
-    border: 0px solid transparent;
     text-shadow: 0px 0px 0px transparent;
-    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../../assets/icons/layers.svg");
 }
-.layer-control-container .button-img{
-    width: 100%;
-    height: 100%;
+.layer-menu{
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 3px 15px;
+    width: auto;
+    height: auto;
+    border-radius: 4px 4px 30px 30px;
+    box-shadow: 0 0 0 2px rgb(0 0 0 / 10%);
+    background-image: none;
+}
+.close-button{
+    /* width: 80% */
+    position: relative;
+    width: 120px; 
+    height: 50px;
+    background-color: white;
+    border-radius: 4px;
+
+    background-position: left;
+    background-repeat: no-repeat;
+    background-image: url("../../assets/icons/fastForward.svg");
 }
 .layer-control-container:focus{
     outline: 0;
@@ -29,17 +52,6 @@
     border: none;
 }
 .mapboxgl-ctrl-attrib.mapboxgl-compact{
-    display: none;
-}
-.layer-menu{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: auto;
-    height: auto;
-    border-radius: 4px 4px 30px 30px;
-}
-.layer-menu .button-img{
     display: none;
 }
 .list{
@@ -54,15 +66,9 @@
     margin: 6px;
     padding: 6px;
 }
-.close-button{
-    width: 80%;
-    height: 50px;
-    background-color: white;
-    border-radius: 4px;
-
-    background-position: left;
-    background-repeat: no-repeat;
-    background-image: url("../../assets/icons/fastForward.svg");
+.hide{
+    width: 0;
+    height: 0;
 }
 
 @media screen and (min-width: 750px){
