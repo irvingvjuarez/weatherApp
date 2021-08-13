@@ -1,6 +1,7 @@
 import React from "react"
 import mapboxgl from 'mapbox-gl';
 import LayersControl from "./LayersControl"
+import LayersList from "./LayersList"
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import "./styles/Map.css"
@@ -10,7 +11,6 @@ class Map extends React.Component{
     constructor(props){
         super(props)
         this.coordinates = []
-        this.layers = ["Temperature", "Wind speed", "Cloudiness", "Precipitation", "None"]
     }
 
     componentDidMount(){
@@ -23,10 +23,11 @@ class Map extends React.Component{
         });
 
         map.addControl(LayersControl, "bottom-right")
-
+        
         map.on("load", () => {
             let triggerBtn = document.querySelector(".layer-control-container")
             triggerBtn.addEventListener("click", this.triggerLayerMenu)
+            map.addControl(LayersList, "bottom-right")
         })
 
     }
