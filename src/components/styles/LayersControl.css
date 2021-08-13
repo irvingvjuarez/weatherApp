@@ -27,9 +27,9 @@
     justify-content: flex-start;
     align-items: flex-start;
     padding: 3px 15px;
-    width: 120px;
-    height: auto;
-    border-radius: 4px 4px 30px 30px;
+    width: 130px;
+    height: 40px;
+    border-radius: 30px;
     box-shadow: 0 0 0 2px rgb(0 0 0 / 10%);
     background-image: none;
 }
@@ -52,9 +52,9 @@
     outline: none;
     border: none;
 }
-.mapboxgl-ctrl-attrib.mapboxgl-compact{
+/* .mapboxgl-ctrl-attrib.mapboxgl-compact{
     display: none;
-}
+} */
 .list{
     width: 100%;
     list-style: none;
@@ -71,9 +71,6 @@
     width: 0;
     height: 0;
 }
-.invisible{
-    opacity: 0;
-}
 
 @media screen and (min-width: 750px){
     .layer-control-container{
@@ -82,8 +79,9 @@
         padding: 9px;
     }
     .layer-menu{
-        width: auto;
-        height: auto;
+        width: 140px;
+        height: 48px;
+        padding: 0 12px;
     }
     .list{
         font-size: 1.8rem;

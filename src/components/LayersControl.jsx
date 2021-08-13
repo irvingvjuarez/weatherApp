@@ -29,7 +29,7 @@ class MapboxGLButtonControl {
             this._ul.appendChild(li)
         }
 
-        this._btn.append(this._closeBtn, this._ul)
+        this._btn.append(this._closeBtn)
 
         return this._btn;
     }
