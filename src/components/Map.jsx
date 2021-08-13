@@ -30,7 +30,7 @@ class Map extends React.Component{
     }
 
     getRightBtn = (target) => {
-        if(target.classList.contains("close-button")){
+        if(target.classList.contains("close-button") || target.classList.contains("list") || target.classList.contains("list-item")){
             return target.parentNode
         }else{
             return target
@@ -41,21 +41,30 @@ class Map extends React.Component{
         let container = this.getRightBtn(e.target)
 
         let closeBtn = container.childNodes[0]
+        let ul = container.childNodes[1]
 
         if(container.classList.contains("layer-menu")){
             container.classList.remove("layer-menu")
             closeBtn.classList.add("hide")
+            ul.classList.add("hide")
 
-            container.removeEventListener("mousemove", this.moveHandler)
+            container.childNodes[0].removeEventListener("mousemove", this.moveHandler)
             container.removeEventListener("touchmove", this.moveHandler)
             this.coordinates = []
         }else{
             container.classList.add("layer-menu")
             closeBtn.classList.remove("hide")
+            ul.classList.remove("hide")
 
-            container.addEventListener("mousemove", this.moveHandler)
+            container.childNodes[0].addEventListener("mousedown", this.mouseDown)
             container.addEventListener("touchmove", this.moveHandler)
         }
+    }
+
+    mouseDown = (e) => {
+        let container = e.target
+
+        container.addEventListener("mousemove", this.moveHandler)
     }
 
     moveHandler = (e) => {
@@ -67,11 +76,18 @@ class Map extends React.Component{
             let index = this.coordinates.length - 1
     
             if(this.coordinates[index] > this.coordinates[index - 1]){
-                if(index < 35){
-                    container.childNodes[0].style.left = `${index}px`
+                if(index < 25){
+                    container.childNodes[0].style.left = `${index + 10}px`
+                }else{
+                    this.moveEnd(container)
                 }
             }
         }
+    }
+
+    moveEnd = (btn) => {
+        btn.childNodes[0].style.left = "0"
+        btn.click()
     }
 
     componentDidUpdate(){

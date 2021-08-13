@@ -1,6 +1,6 @@
 import "./styles/LayersControl.css"
 
-var xCoord = []
+const layers = ["Temperature", "Wind speed", "Cloudiness", "Precipitation", "None"]
 
 class MapboxGLButtonControl {
     constructor({
@@ -19,7 +19,17 @@ class MapboxGLButtonControl {
         this._closeBtn = document.createElement("div")
         this._closeBtn.className = "close-button hide"
 
-        this._btn.appendChild(this._closeBtn)
+        this._ul = document.createElement("ul")
+        this._ul.className = "list hide"
+
+        for(let i = 0; i < 5; i++){
+            let li = document.createElement("li")
+            li.className = "invisible list-item"
+            li.textContent = layers[i]
+            this._ul.appendChild(li)
+        }
+
+        this._btn.append(this._closeBtn, this._ul)
 
         return this._btn;
     }
@@ -28,52 +38,6 @@ class MapboxGLButtonControl {
         this._container.parentNode.removeChild(this._container);
         this._map = undefined;
     }
-}
-
-const endMouseMovemement = (e) => {
-    e.target.removeEventListener("mousemove", handleMovement)
-    endTouch(e)
-}
-
-const handleMouseMovement = (e) => {
-    e.target.addEventListener("mousemove", handleMovement)
-}
-
-const handleMovement = (e) => {
-    let xcoor = e.screenX || e.changedTouches[0].screenX
-    xCoord.push(xcoor)
-
-    if(xCoord.length > 0){
-        let index = xCoord.length - 1
-
-        if(xCoord[index] > xCoord[index - 1]){
-            if(index < 35){
-                e.target.style.marginLeft = `${index}px`
-            }
-        }
-    }
-}
-
-const endTouch = (e) => {
-    let container = e.target.parentNode.parentNode
-    xCoord = []
-    e.target.style.marginLeft = "0px"
-    let children = [...container.children]
-
-    setTimeout(() => {
-        container.classList.remove("layer-menu")
-        children.map(item => {
-            item.style.display = "none"
-        })
-
-        container.innerHTML = `
-            <img src="../assets/icons/layers.svg" class="button-img"/>
-        `
-
-        container.classList.add("layer-control-container")
-    }, 150)
-
-    e.target.removeEventListener("mousemove", handleMovement)
 }
 
 const LayersControl = new MapboxGLButtonControl({
