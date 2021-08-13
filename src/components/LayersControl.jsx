@@ -1,7 +1,5 @@
 import "./styles/LayersControl.css"
 
-const layers = ["Temperature", "Wind speed", "Cloudiness", "Precipitation", "None"]
-
 class MapboxGLButtonControl {
     constructor({
         className = "",
@@ -18,16 +16,6 @@ class MapboxGLButtonControl {
 
         this._closeBtn = document.createElement("div")
         this._closeBtn.className = "close-button hide"
-
-        this._ul = document.createElement("ul")
-        this._ul.className = "list hide"
-
-        for(let i = 0; i < 5; i++){
-            let li = document.createElement("li")
-            li.className = "invisible list-item"
-            li.textContent = layers[i]
-            this._ul.appendChild(li)
-        }
 
         this._btn.append(this._closeBtn)
 

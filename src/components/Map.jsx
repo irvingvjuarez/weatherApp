@@ -10,6 +10,7 @@ class Map extends React.Component{
     constructor(props){
         super(props)
         this.coordinates = []
+        this.layers = ["Temperature", "Wind speed", "Cloudiness", "Precipitation", "None"]
     }
 
     componentDidMount(){
@@ -27,6 +28,7 @@ class Map extends React.Component{
             let triggerBtn = document.querySelector(".layer-control-container")
             triggerBtn.addEventListener("click", this.triggerLayerMenu)
         })
+
     }
 
     getRightBtn = (target) => {

@@ -52,9 +52,9 @@
     outline: none;
     border: none;
 }
-/* .mapboxgl-ctrl-attrib.mapboxgl-compact{
+.mapboxgl-ctrl-attrib.mapboxgl-compact{
     display: none;
-} */
+}
 .list{
     width: 100%;
     list-style: none;
