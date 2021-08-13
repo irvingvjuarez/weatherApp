@@ -23,13 +23,21 @@ class Map extends React.Component{
         });
 
         map.addControl(LayersControl, "bottom-right")
+        map.addControl(LayersList, "bottom-right")
         
         map.on("load", () => {
             let triggerBtn = document.querySelector(".layer-control-container")
             triggerBtn.addEventListener("click", this.triggerLayerMenu)
-            map.addControl(LayersList, "bottom-right")
-        })
 
+            let items = [...document.querySelectorAll(".list-item")]
+            items.map(item => {
+                item.addEventListener("click", this.setLayer)
+            })
+        })
+    }
+
+    setLayer = (e) => {
+        console.log(e.target.textContent)
     }
 
     getRightBtn = (target) => {
