@@ -1,4 +1,5 @@
 import React from "react"
+import Section from "../components/Section"
 import BasicInfo from "../components/BasicInfo"
 import TempOverview from "../components/TempOverview"
 import Carousel from "../components/Carousel"
@@ -12,19 +13,13 @@ class Weather extends React.Component{
 
     render(){
         return(
-            <section className="weather-main">
-                <article>
-                    <div>
-                        <BasicInfo />
-                        <TempOverview />
-                        <Carousel />
-                    </div>
-
-                    <div>
-
-                    </div>
-                </article>
-            </section>
+            <React.Fragment>
+                <BasicInfo />
+                <TempOverview />
+                <Section title="Temperature over time">
+                    <Carousel />
+                </Section>
+            </React.Fragment>
         )
     }
 }

@@ -11,7 +11,7 @@ class BasicInfo extends React.Component{
             <section className="basic-info">
                 <article className="basic-info__sky-data">
                     <div>
-                        <span className="sky-data__logo"></span> 
+                        <img src="../assets/icons/cloudy.png" alt="Cloudy logo" className="sky-data__logo"/>
                         <h3 className="sku-data__title">Cloudly</h3>
                     </div>
 

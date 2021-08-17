@@ -1,19 +1,6 @@
 .weather-main{
     display: flex;
-    height: calc(100% - 45px);
-    overflow-x: scroll;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x proximity;
-}
-.weather-main > article{
-    display: flex;
-    scroll-snap-align: none;
-}
-.weather-main > article > div{
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 100vw;
-    height: calc(100vh - 45px);
-    scroll-snap-align: center;
+    width: 100%;
+    height: auto;
 }
