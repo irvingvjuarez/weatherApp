@@ -7,6 +7,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import "./styles/Map.css"
 import "./styles/LayersControl.css"
 
+var map
+
 class Map extends React.Component{
     constructor(props){
         super(props)
@@ -15,11 +17,11 @@ class Map extends React.Component{
 
     componentDidMount(){
         mapboxgl.accessToken = 'pk.eyJ1IjoiaXZqYyIsImEiOiJja3M2Z2ljcTIxNzBpMnByejZsaTFiOWdjIn0.qchk1ClOLnbqLwdLpOzSCg';
-        var map = new mapboxgl.Map({
+        map = new mapboxgl.Map({
             container: 'map', // container ID
-            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+            style: 'mapbox://styles/mapbox/dark-v10', // style URL
             center: [`${this.props.lon}`, `${this.props.lat}`], // starting position [lng, lat]
-            zoom: 14 // starting zoom
+            zoom: 7 // starting zoom
         });
 
         map.addControl(LayersControl, "bottom-right")
@@ -38,6 +40,19 @@ class Map extends React.Component{
 
     setLayer = (e) => {
         console.log(e.target.textContent)
+        map.addLayer({
+            id: `${e.target.textContent}`,
+            'type': 'raster',
+            'source': {
+                'type': 'raster',
+                'tiles': [
+                'https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=51e2f79a6ef7e59aa6374290d6ab52dc'
+                ]
+            },
+            'paint': {
+                'raster-fade-duration': 0
+            }
+        });
     }
 
     getRightBtn = (target) => {
@@ -52,7 +67,6 @@ class Map extends React.Component{
         let container = this.getRightBtn(e.target)
         let closeBtn = container.childNodes[0]
         let layersList = document.querySelector(".layers-list")
-        console.log(layersList)
 
         if(container.classList.contains("layer-menu")){
             container.classList.remove("layer-menu")
