@@ -7,7 +7,12 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import "./styles/Map.css"
 import "./styles/LayersControl.css"
 
-var map
+var map, toggleLayersIds = [
+    {id: "Temperature", layer: "temp_new"},
+    {id: "Wind speed", layer: "wind_new"},
+    {id: "Cloudiness", layer: "clouds_new"},
+    {id: "Precipitation", layer: "precipitation_new"}
+]
 
 class Map extends React.Component{
     constructor(props){
@@ -80,72 +85,28 @@ class Map extends React.Component{
     }
 
     addSources = () => {
-        map.addSource('Temperature', {
-            'type': 'raster',
-            'tiles': [
-            `${process.env.MapTileAPI.replace("LAYER", 'temp_new')}`
-            ]
-        })
-
-        map.addSource('Wind speed', {
-            'type': 'raster',
-            'tiles': [
-            `${process.env.MapTileAPI.replace("LAYER", 'wind_new')}`
-            ]
-        })
-
-        map.addSource('Cloudiness', {
-            'type': 'raster',
-            'tiles': [
-            `${process.env.MapTileAPI.replace("LAYER", 'clouds_new')}`
-            ]
-        })
-
-        map.addSource('Precipitation', {
-            'type': 'raster',
-            'tiles': [
-            `${process.env.MapTileAPI.replace("LAYER", 'precipitation_new')}`
-            ]
+        toggleLayersIds.map(layer => {
+            map.addSource(layer.id, {
+                'type': 'raster',
+                'tiles': [
+                    `${process.env.MapTileAPI.replace("LAYER", layer.layer)}`
+                ]
+            })
         })
 
         this.addLayers()
     }
 
     addLayers = () => {
-        map.addLayer({
-            'id': 'Temperature',
-            'type': 'raster',
-            'source': 'Temperature',
-            'layout': {
-                'visibility': 'none'
-            }
-        })
-
-        map.addLayer({
-            'id': 'Wind speed',
-            'type': 'raster',
-            'source': 'Wind speed',
-            'layout': {
-                'visibility': 'none'
-            }
-        })
-
-        map.addLayer({
-            'id': 'Cloudiness',
-            'type': 'raster',
-            'source': 'Cloudiness',
-            'layout': {
-                'visibility': 'none'
-            }
-        })
-
-        map.addLayer({
-            'id': 'Precipitation',
-            'type': 'raster',
-            'source': 'Precipitation',
-            'layout': {
-                'visibility': 'none'
-            }
+        toggleLayersIds.map(layer => {
+            map.addLayer({
+                'id': layer.id,
+                'type': 'raster',
+                'source': layer.id,
+                'layout': {
+                    'visibility': 'none'
+                }
+            })
         })
     }
 
