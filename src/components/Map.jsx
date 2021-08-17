@@ -83,28 +83,28 @@ class Map extends React.Component{
         map.addSource('Temperature', {
             'type': 'raster',
             'tiles': [
-            'https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=51e2f79a6ef7e59aa6374290d6ab52dc'
+            `${process.env.MapTileAPI.replace("LAYER", 'temp_new')}`
             ]
         })
 
         map.addSource('Wind speed', {
             'type': 'raster',
             'tiles': [
-            'https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=51e2f79a6ef7e59aa6374290d6ab52dc'
+            `${process.env.MapTileAPI.replace("LAYER", 'wind_new')}`
             ]
         })
 
         map.addSource('Cloudiness', {
             'type': 'raster',
             'tiles': [
-            'https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=51e2f79a6ef7e59aa6374290d6ab52dc'
+            `${process.env.MapTileAPI.replace("LAYER", 'clouds_new')}`
             ]
         })
 
         map.addSource('Precipitation', {
             'type': 'raster',
             'tiles': [
-            'https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=51e2f79a6ef7e59aa6374290d6ab52dc'
+            `${process.env.MapTileAPI.replace("LAYER", 'precipitation_new')}`
             ]
         })
 
