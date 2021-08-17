@@ -26,8 +26,8 @@ class Map extends React.Component{
         map.addControl(LayersList, "bottom-right")
         
         map.on("load", () => {
-            let triggerBtn = document.querySelector(".layer-control-container")
-            triggerBtn.addEventListener("click", this.triggerLayerMenu)
+            let layersBtn = document.querySelector(".layer-control-container")
+            layersBtn.addEventListener("click", this.handleLayersBtnClick)
 
             let items = [...document.querySelectorAll(".list-item")]
             items.map(item => {
@@ -48,10 +48,11 @@ class Map extends React.Component{
         }
     }
 
-    triggerLayerMenu = (e) => {
+    handleLayersBtnClick = (e) => {
         let container = this.getRightBtn(e.target)
-
         let closeBtn = container.childNodes[0]
+        let layersList = document.querySelector(".layers-list")
+        console.log(layersList)
 
         if(container.classList.contains("layer-menu")){
             container.classList.remove("layer-menu")
@@ -59,6 +60,9 @@ class Map extends React.Component{
 
             container.childNodes[0].removeEventListener("mousemove", this.moveHandler)
             container.removeEventListener("touchmove", this.moveHandler)
+
+            layersList.classList.add("hide")
+
             this.coordinates = []
         }else{
             container.classList.add("layer-menu")
@@ -66,6 +70,8 @@ class Map extends React.Component{
 
             container.childNodes[0].addEventListener("mousedown", this.mouseDown)
             container.addEventListener("touchmove", this.moveHandler)
+
+            layersList.classList.remove("hide")
         }
     }
 

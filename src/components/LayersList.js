@@ -8,7 +8,7 @@ class List {
 
     onAdd(map) {
         this._container = document.createElement("div")
-        this._container.className = this._className
+        this._container.className = `${this._className} hide`
 
         for(let item of this.layers){
             let h3 = document.createElement("h3")

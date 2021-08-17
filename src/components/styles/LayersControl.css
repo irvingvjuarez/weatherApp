@@ -1,4 +1,5 @@
 .layer-control-container, .layer-menu{
+    position: relative;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -8,6 +9,7 @@
     float: right;
     clear: both;
     pointer-events: auto;
+    z-index: 2;
 }
 
 .layer-control-container{
@@ -58,6 +60,7 @@
 .hide{
     width: 0;
     height: 0;
+    overflow: hidden;
 }
 
 @media screen and (min-width: 750px){
