@@ -48,27 +48,35 @@ class Map extends React.Component{
         let layerId = e.target.textContent
         let arr = [...document.querySelectorAll(".list-item")]
 
+        arr.map(layer => {
+            if(layerId === layer.textContent){
+                layer.classList.add("active")
+            }else{
+                layer.classList.remove("active")
+            }
+        })
+
         if(layerId === "None"){
-            e.target.classList.add("active")
-            arr.map(layer => {
-                if(layer.textContent != "None"){
-                    layer.classList.remove("active")
-                    map.setLayoutProperty(layer.textContent, 'visibility', 'none')
-                }
-            })
+            this.turningOnLayer(arr, false)
         }else{
-            arr.map(layer => {
-                if(layer.textContent != "None"){
-                    if(layerId === layer.textContent){
-                        layer.classList.add("active")
-                        map.setLayoutProperty(layerId, 'visibility', 'visible');
+            this.turningOnLayer(arr, true, layerId)
+        }
+    }
+
+    turningOnLayer = (arr, status, benchmark) => {
+        arr.map(layer => {
+            if(layer.textContent != "None"){
+                if(status){
+                    if(benchmark === layer.textContent){
+                        map.setLayoutProperty(benchmark, 'visibility', 'visible');
                     }else{
-                        layer.classList.remove("active")
                         map.setLayoutProperty(layer.textContent, 'visibility', 'none');
                     }
+                }else{
+                    map.setLayoutProperty(layer.textContent, 'visibility', 'none')
                 }
-            })
-        }
+            }
+        })
     }
 
     addSources = () => {
