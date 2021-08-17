@@ -3,6 +3,9 @@
     height: calc(100% - 45px);
     z-index: 0;
 }
+.active{
+    text-decoration: underline;
+}
 
 @media screen and (min-width: 750px){
     .map-container{

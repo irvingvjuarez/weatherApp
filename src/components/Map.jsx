@@ -31,28 +31,114 @@ class Map extends React.Component{
             let layersBtn = document.querySelector(".layer-control-container")
             layersBtn.addEventListener("click", this.handleLayersBtnClick)
 
-            let items = [...document.querySelectorAll(".list-item")]
-            items.map(item => {
-                item.addEventListener("click", this.setLayer)
-            })
+            this.setuptLayersIds()
+            this.addSources()
+        })
+    }
+
+    setuptLayersIds = () => {
+        let items = [...document.querySelectorAll(".list-item")]
+
+        items.map(item => {
+            item.addEventListener("click", this.setLayer)
         })
     }
 
     setLayer = (e) => {
-        console.log(e.target.textContent)
-        map.addLayer({
-            id: `${e.target.textContent}`,
+        let layerId = e.target.textContent
+        let arr = [...document.querySelectorAll(".list-item")]
+
+        if(layerId === "None"){
+            e.target.classList.add("active")
+            arr.map(layer => {
+                if(layer.textContent != "None"){
+                    layer.classList.remove("active")
+                    map.setLayoutProperty(layer.textContent, 'visibility', 'none')
+                }
+            })
+        }else{
+            arr.map(layer => {
+                if(layer.textContent != "None"){
+                    if(layerId === layer.textContent){
+                        layer.classList.add("active")
+                        map.setLayoutProperty(layerId, 'visibility', 'visible');
+                    }else{
+                        layer.classList.remove("active")
+                        map.setLayoutProperty(layer.textContent, 'visibility', 'none');
+                    }
+                }
+            })
+        }
+    }
+
+    addSources = () => {
+        map.addSource('Temperature', {
             'type': 'raster',
-            'source': {
-                'type': 'raster',
-                'tiles': [
-                'https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=51e2f79a6ef7e59aa6374290d6ab52dc'
-                ]
-            },
-            'paint': {
-                'raster-fade-duration': 0
+            'tiles': [
+            'https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=51e2f79a6ef7e59aa6374290d6ab52dc'
+            ]
+        })
+
+        map.addSource('Wind speed', {
+            'type': 'raster',
+            'tiles': [
+            'https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=51e2f79a6ef7e59aa6374290d6ab52dc'
+            ]
+        })
+
+        map.addSource('Cloudiness', {
+            'type': 'raster',
+            'tiles': [
+            'https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=51e2f79a6ef7e59aa6374290d6ab52dc'
+            ]
+        })
+
+        map.addSource('Precipitation', {
+            'type': 'raster',
+            'tiles': [
+            'https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=51e2f79a6ef7e59aa6374290d6ab52dc'
+            ]
+        })
+
+        this.addLayers()
+    }
+
+    addLayers = () => {
+        map.addLayer({
+            'id': 'Temperature',
+            'type': 'raster',
+            'source': 'Temperature',
+            'layout': {
+                'visibility': 'none'
             }
-        });
+        })
+
+        map.addLayer({
+            'id': 'Wind speed',
+            'type': 'raster',
+            'source': 'Wind speed',
+            'layout': {
+                'visibility': 'none'
+            }
+        })
+
+        map.addLayer({
+            'id': 'Cloudiness',
+            'type': 'raster',
+            'source': 'Cloudiness',
+            'layout': {
+                'visibility': 'none'
+            }
+        })
+
+        map.addLayer({
+            'id': 'Precipitation',
+            'type': 'raster',
+            'source': 'Precipitation',
+            'layout': {
+                'visibility': 'none'
+            }
+        })
     }
 
     getRightBtn = (target) => {
