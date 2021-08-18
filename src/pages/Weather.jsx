@@ -13,17 +13,9 @@ class Weather extends React.Component{
     render(){
         return(
             <section className="weather-main">
-                <article>
-                    <div>
-                        <BasicInfo />
-                        <TempOverview />
-                        <Carousel />
-                    </div>
-
-                    <div>
-
-                    </div>
-                </article>
+                <BasicInfo />
+                <TempOverview />
+                <Carousel />
             </section>
         )
     }
