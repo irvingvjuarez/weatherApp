@@ -1,0 +1,31 @@
+.day-forecast-column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.day-forecast-column > *{
+    margin-bottom: 3px;
+}
+.day-forecast-column > img{
+    width: 21px;
+    height: 21px;
+
+    border: 1px solid white;
+    border-radius: 50%;
+}
+.day-forecast-column > span{
+    font-family: var(--thirdFont);
+    font-weight: 300;
+    font-size: 1.4rem;
+}
+.day-forecast-column > h2, .day-forecast-column > p{
+    font-family: var(--thirdFont);
+    font-size: 1.8rem;
+}
+.day-forecast-column > h2{
+    font-weight: 700;
+}
+.day-forecast-column > p{
+    font-weight: 300;
+}
