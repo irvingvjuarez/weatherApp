@@ -1,6 +1,6 @@
-// import React from "react"
+import React from "react"
 
-const weatherColumn = (props) => (
+const WeatherColumn = (props) => (
     <div className="weather-column">
         <img src={props.imgUrl} alt={props.title} />
         <span>60%</span>
@@ -10,4 +10,4 @@ const weatherColumn = (props) => (
     </div>
 )
 
-export default weatherColumn
+export default WeatherColumn

@@ -2,7 +2,7 @@ import React from "react"
 import "./styles/Section.css"
 
 const Section = (props) => (
-    <section className="section-main">
+    <section className="sectionMain">
         <h2>{props.title}</h2>
         {props.children}
     </section>
