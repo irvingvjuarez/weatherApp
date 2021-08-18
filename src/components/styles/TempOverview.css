@@ -1,6 +1,7 @@
 .tempOverview{
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: center;
     margin: 57px auto;
     color: var(--primaryColor);
 }

@@ -1,0 +1,32 @@
+.weather-column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.weather-column > img{
+    width: 21px;
+    height: 21px;
+
+    border-radius: 50%;
+    background-color: black;
+}
+.weather-column > span{
+    font-family: var(--thirdFont);
+    font-weight: 300;
+    font-size: 1.4rem;
+}
+.weather-column > h2{
+    font-family: var(--thirdFont);
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+.weather-column > h3{
+    font-family: var(--thirdFont);
+    font-weight: 300;
+    font-size: 1.8rem;
+}
+.weather-column > p{
+    font-family: var(--secondFont);
+    font-weight: 300;
+    font-size: 1.8rem;
+}

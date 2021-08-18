@@ -4,6 +4,7 @@
     padding: 0 9px;
 }
 .section-main > h2{
+    margin-bottom: 9px;
     font-family: var(--mainFont);
     font-weight: 400;
     font-size: 2rem;

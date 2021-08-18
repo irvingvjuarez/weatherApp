@@ -8,10 +8,7 @@ class Carousel extends React.Component{
 
     render(){
         return(
-            <section className="carousel-main">
-                <h2>Title</h2>
-                <canvas className="chart"></canvas>
-            </section>
+            <canvas className="chart"></canvas>
         )
     }
 }
