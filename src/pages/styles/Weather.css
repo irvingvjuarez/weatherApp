@@ -4,3 +4,8 @@
     width: 100%;
     height: auto;
 }
+.details-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
