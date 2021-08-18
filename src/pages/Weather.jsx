@@ -2,6 +2,7 @@ import React from "react"
 import BasicInfo from "../components/BasicInfo"
 import TempOverview from "../components/TempOverview"
 import Carousel from "../components/Carousel"
+import Section from "../components/Section"
 
 import "./styles/Weather.css"
 
@@ -15,7 +16,22 @@ class Weather extends React.Component{
             <section className="weather-main">
                 <BasicInfo />
                 <TempOverview />
-                <Carousel />
+
+                <Section title="Temperature over time">
+                    <Carousel />
+                </Section>
+
+                <Section title="Details">
+
+                </Section>
+
+                <Section title="Rain probability">
+                    <Carousel />
+                </Section>
+
+                <Section title="Next 7 days">
+
+                </Section>
             </section>
         )
     }
