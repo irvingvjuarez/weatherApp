@@ -2,6 +2,7 @@ import React from "react"
 import Loader from "../components/Loader"
 import Map from "../components/Map"
 import BasicInfo from "../components/BasicInfo"
+import Weather from "./Weather"
 
 import "./styles/Home.css"
 
@@ -25,7 +26,7 @@ class Home extends React.Component{
             return(
                 <section className="home-main">
                     <article className="home-main__info">
-
+                        <Weather />
                     </article>
 
                     <article className="home-main__map">
