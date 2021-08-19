@@ -1,6 +1,9 @@
 import React from "react"
 import Loader from "../components/Loader"
 import Map from "../components/Map"
+import BasicInfo from "../components/BasicInfo"
+
+import "./styles/Home.css"
 
 class Home extends React.Component{
     constructor(props){
@@ -20,7 +23,18 @@ class Home extends React.Component{
             )
         }else{
             return(
-                <Map lat={data.coord.lat} lon={data.coord.lon}/>
+                <section className="home-main">
+                    <article className="home-main__info">
+
+                    </article>
+
+                    <article className="home-main__map">
+                        <div className="home-main__map--basic-info-container">
+                            <BasicInfo />
+                        </div>
+                        <Map lat={data.coord.lat} lon={data.coord.lon}/>
+                    </article>
+                </section>
             )
         }
     }

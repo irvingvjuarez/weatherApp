@@ -1,13 +1,13 @@
 .map-container{
     width: 100%;
-    height: calc(100% - 45px);
+    height: 100%;
     z-index: 0;
 }
 .active{
     text-decoration: underline;
 }
 
-@media screen and (min-width: 750px){
+/* @media screen and (min-width: 750px){
     .map-container{
         height: calc(100% - 55px);
     }
@@ -17,4 +17,4 @@
     .map-container{
         height: calc(100% - 67px);
     }
-}
+} */
