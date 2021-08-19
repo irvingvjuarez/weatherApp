@@ -1,3 +1,10 @@
-/* #chart{
-    background-color: black;
-} */
+.chart-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 0;
+    overflow-x: scroll;
+
+    font-family: var(--mainFont);
+    font-size: 1.4rem;
+}

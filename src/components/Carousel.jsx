@@ -24,20 +24,22 @@ class Carousel extends React.Component{
 
     render(){
         return(
-            <LineChart
-                width={300}
-                height={113}
-                data={data}
-                margin={{ top: 5, right: 0, bottom: 5, left: 0 }}
-            >
+            <article className="chart-container">
+                <LineChart
+                    width={330}
+                    height={213}
+                    data={data}
+                    margin={{ top: 5, right: 0, bottom: 5, left: 0 }}
+                >
 
-                <Line type="monotone" dataKey="degrees" stroke="#8884d8" />
-                <CartesianGrid stroke="#fff" />
-                <XAxis dataKey="time" />
-                <YAxis type="number" name="temp" unit="°"/>
-                <Tooltip />
+                    <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+                    <CartesianGrid stroke="#fff" />
+                    <XAxis dataKey="time" name="time"/>
+                    <YAxis type="number" name="temp" unit="°"/>
+                    <Tooltip />
 
-            </LineChart>
+                </LineChart>
+            </article>
         )
     }
 }

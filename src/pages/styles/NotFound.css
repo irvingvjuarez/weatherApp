@@ -7,11 +7,21 @@
     height: 90%;
 }
 .error404-container img{
-    margin-bottom: 30px;
+    width: 95vw;
 }
 .return-btn{
-    padding: 9px;
+    padding: 9px 18px;
     border-radius: 15px;
+
     font-family: var(--mainFont);
+    font-size: 1.7rem;
+    font-weight: 700;
     background-color: var(--secondaryColor);
+    color: white;
+}
+
+@media screen and (min-width: 700px){
+    .error404-container img{
+        width: 60vw;
+    }
 }
