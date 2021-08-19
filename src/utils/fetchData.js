@@ -1,17 +1,44 @@
+const getOneCallAPI = (data) => {
+    let lon = data.coord.lon
+    let lat = data.coord.lat
+    let oneCallAPI = process.env.WeatherOneCallAPI.replace("LAT", lat)
+    oneCallAPI = oneCallAPI.replace("LON", lon)
+
+    return oneCallAPI
+}
+
 const getData = async(API, component) => {
 
     try{
         let response = await fetch(API)
         let data = await response.json()
 
-        if(!component){
-            return await data
+        try{
+            let newAPI = getOneCallAPI(data)
+            let newResponse = await fetch(newAPI)
+            let newData = await newResponse.json()
+            let superData = {
+                ...data,
+                ...newData
+            }
+            
+            // console.log(superData)
+
+            if(!component){
+                return await superData
+            }
+            
+            component.setState({
+                loading: false,
+                data: data
+            })
+        }catch(error){
+            component.setState({
+                loading: false,
+                error: error
+            })
         }
         
-        component.setState({
-            loading: false,
-            data: data
-        })
     }catch(error){
         component.setState({
             loading: false,
