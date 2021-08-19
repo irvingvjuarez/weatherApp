@@ -3,8 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 95px;
-    height: 95px;
+    height: 105px;
     padding: 9px;
 
     color: white;
@@ -27,4 +26,17 @@
     font-family: var(--mainFont);
     font-weight: 400;
     font-size: 1.2rem;
+}
+
+@media screen and (min-width: 1000px){
+    .detail-card{
+        width: 105px;
+        height: 115px;
+    }
+    .detail-card > p{
+        font-size: 1.7rem;
+    }
+    .detail-card > h2{
+        font-size: 1.6rem;
+    }
 }

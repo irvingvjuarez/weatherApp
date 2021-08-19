@@ -68,6 +68,12 @@
         transform: none;
         color: white;
     }
+    .basic-info__local-time img{
+        width: 23px;
+    }
+}
+
+@media screen and (min-width: 1000px){
     .basic-info__local-time > h3{
         font-size: 1.9rem;
     }
@@ -77,10 +83,7 @@
     .local-time__time{
         font-size: 1.8rem;
     }
-    .basic-info__local-time img{
-        width: 23px;
-    }
     .sku-data__title{
         font-size: 2.2rem;
-    }
+    } 
 }

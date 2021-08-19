@@ -10,21 +10,13 @@ class Home extends React.Component{
     constructor(props){
         super(props)
     }
-    
-    render(){
-        const { data, loading, error } = this.props.component.state
 
-        if(loading){
+    renderContent(){
+        const { data } = this.props.component.state
+
+        if(screen.width >= 750){
             return(
-                <Loader />
-            )
-        }else if(error){
-            return(
-                <h3>Error: {error.message}</h3>
-            )
-        }else{
-            return(
-                <section className="home-main">
+                <React.Fragment>
                     <article className="home-main__info">
                         <Weather />
                     </article>
@@ -35,6 +27,32 @@ class Home extends React.Component{
                         </div>
                         <Map lat={data.coord.lat} lon={data.coord.lon}/>
                     </article>
+                </React.Fragment>
+            )
+        }else{
+            return(
+                <Map lat={data.coord.lat} lon={data.coord.lon}/>
+            )
+        }
+    }
+    
+    render(){
+        const { loading, error } = this.props.component.state
+
+        if(loading){
+            return(
+                <Loader />
+            )
+        }else if(error){
+            return(
+                <div className="error-msg">
+                    <h3>Error: {error.message}</h3>
+                </div>
+            )
+        }else{
+            return(
+                <section className="home-main">
+                    {this.renderContent()}
                 </section>
             )
         }

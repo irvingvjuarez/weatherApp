@@ -6,12 +6,15 @@
 }
 .home-main__info{
     display: none;
-    width: 345px;
     height: 100%;
 
     background-color: white;
 }
+.home-main__info .basic-info{
+    display: none;
+}
 .home-main__map{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,6 +25,12 @@
 .home-main__map--basic-info-container{
     display: none;
 }
+.error-msg{
+    margin: 0 auto;
+    padding: 18px;
+    font-family: var(--mainFont);
+    font-size: 2rem;
+}
 
 @media screen and (min-width: 750px){
     .home-main{
@@ -31,8 +40,12 @@
         display: flex;
     }
     .home-main__map--basic-info-container{
+        position: absolute;
+        top: 0;
+        left: 0;
         display: flex;
         width: 100%;
+        z-index: 1;
     }
 }
 
