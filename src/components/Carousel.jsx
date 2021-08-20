@@ -29,7 +29,7 @@ class Carousel extends React.Component{
 
                     <Line type="monotone" dataKey={this.props.name} stroke="#8884d8" />
                     <CartesianGrid stroke="#fff" />
-                    <XAxis dataKey="dt" name="time"/>
+                    <XAxis dataKey="dt" name="time" interval={1}/>
                     <YAxis type="number" name={this.props.name} unit={this.props.unit}/>
                     <Tooltip />
 
