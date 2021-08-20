@@ -1,12 +1,12 @@
 import React from "react"
-import getHourFormat from "../utils/getHourFormat";
 import {
     LineChart,
     Line,
     CartesianGrid,
     XAxis,
     YAxis,
-    Tooltip
+    Tooltip,
+    ResponsiveContainer
 } from "recharts";
 import "./styles/Carousel.css"
 
@@ -16,20 +16,14 @@ class Carousel extends React.Component{
     }
 
     render(){
-        const componentData = [...this.props.data]
-        componentData.map(item => {
-            let hourFormat = getHourFormat(item.dt)
-            item.dt = hourFormat
-        })
-
-        console.log(componentData)
+        // console.log(this.props.data)
 
         return(
             <article className="chart-container">
                 <LineChart
                     width={830}
                     height={213}
-                    data={componentData}
+                    data={this.props.data}
                     margin={{ top: 5, right: 10, bottom: 5, left: 10 }}
                 >
 

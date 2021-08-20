@@ -6,6 +6,7 @@ import Section from "../components/Section"
 import DetailCard from "../components/DetailCard"
 import DayForecast from "../components/DayForecast"
 import Loader from "../components/Loader"
+import getHourFormat from "../utils/getHourFormat"
 
 import "./styles/Weather.css"
 
@@ -17,11 +18,14 @@ class Weather extends React.Component{
     render(){
         const { loading, error } = this.props.state
         const { weather, sys, timezone_offset, main, wind, daily, hourly } = this.props.state.data
-        let sentHourly = []
         for(let i = 0; i < 24; i++){
-            sentHourly.push(hourly[i])
+            hourly.pop()
         }
-        console.log(sentHourly)
+
+        hourly.map(item => {
+            let newFormat = getHourFormat(item.dt)
+            item.dt = String(newFormat)
+        })
 
         if(loading){
             return(
@@ -38,7 +42,7 @@ class Weather extends React.Component{
                     <TempOverview temp={main}/>
     
                     <Section title="Temperature over next 24hrs">
-                        <Carousel data={sentHourly} unit="°" name="temp"/>
+                        <Carousel data={hourly} unit="°" name="temp"/>
                     </Section>
     
                     <Section title="Details">
@@ -50,7 +54,7 @@ class Weather extends React.Component{
                     </Section>
     
                     <Section title="Rain probability over next 24hrs">
-                        <Carousel data={sentHourly} unit="%" name="pop"/>
+                        <Carousel data={hourly} unit="%" name="pop"/>
                     </Section>
     
                     <Section title="Next 7 days">
