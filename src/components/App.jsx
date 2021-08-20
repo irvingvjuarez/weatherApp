@@ -19,7 +19,10 @@ class App extends React.Component{
             error: null,
             data: {
                 name: "",
-                coord: {}
+                coord: {},
+                weather: [
+                    {}
+                ]
             }
         }
     }
@@ -36,10 +39,13 @@ class App extends React.Component{
                 <Layout location={name} component={this} >
                     <Switch>
                         <Route exact path="/" render={(props) => (
-                            <Home component={this} />
+                            <Home state={this.state} />
                         )}/>
                         <Route path="/contact" component={Contact} />
                         <Route path="/about" component={About} />
+                        <Route exact path="/weather-info" render={(props) => (
+                            <Weather data={this.state.data}/>
+                        )} />
                         <Route path="/weather-info" component={Weather} />
                         <Route component={NotFound} />
                     </Switch>

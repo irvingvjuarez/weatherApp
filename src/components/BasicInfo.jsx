@@ -1,4 +1,14 @@
 import React from "react"
+import getWeatherStatus from "../utils/getWeatherStatus"
+
+import cloudy from "../assets/icons/cloudy.png"
+import slightlyCloudy from "../assets/icons/slightlyCloudy.png"
+import rainy from "../assets/icons/rainy.png"
+import snowy from "../assets/icons/snowy.png"
+import strange from "../assets/icons/strange.png"
+import sunny from "../assets/icons/sunny.png"
+import thunder from "../assets/icons/thunder.png"
+
 import "./styles/BasicInfo.css"
 
 class BasicInfo extends React.Component{
@@ -7,12 +17,14 @@ class BasicInfo extends React.Component{
     }
 
     render(){
+        let weatherStatus = getWeatherStatus(this.props.status)
+
         return(
             <section className="basic-info">
                 <article className="basic-info__sky-data">
                     <div>
-                        <span className="sky-data__logo"></span> 
-                        <h3 className="sku-data__title">Cloudly</h3>
+                        <img className="sky-data__logo" src={cloudy}/>
+                        <h3 className="sku-data__title">{weatherStatus}</h3>
                     </div>
 
                     <div className="basic-info__local-time">

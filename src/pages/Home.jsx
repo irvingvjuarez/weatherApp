@@ -12,7 +12,7 @@ class Home extends React.Component{
     }
 
     renderContent(){
-        const { data } = this.props.component.state
+        const { coord, weather } = this.props.state.data
 
         if(screen.width >= 750){
             return(
@@ -23,21 +23,21 @@ class Home extends React.Component{
 
                     <article className="home-main__map">
                         <div className="home-main__map--basic-info-container">
-                            <BasicInfo />
+                            <BasicInfo status={weather[0].main}/>
                         </div>
-                        <Map lat={data.coord.lat} lon={data.coord.lon}/>
+                        <Map lat={coord.lat} lon={coord.lon}/>
                     </article>
                 </React.Fragment>
             )
         }else{
             return(
-                <Map lat={data.coord.lat} lon={data.coord.lon}/>
+                <Map lat={coord.lat} lon={coord.lon}/>
             )
         }
     }
     
     render(){
-        const { loading, error } = this.props.component.state
+        const { loading, error } = this.props.state
 
         if(loading){
             return(

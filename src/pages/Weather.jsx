@@ -14,9 +14,11 @@ class Weather extends React.Component{
     }
 
     render(){
+        const { weather } = this.props.data
+
         return(
             <section className="weather-main">
-                <BasicInfo />
+                <BasicInfo status={weather[0].main}/>
                 <TempOverview />
 
                 <Section title="Temperature over time">

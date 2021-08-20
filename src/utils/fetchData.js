@@ -22,7 +22,7 @@ const getData = async(API, component) => {
                 ...newData
             }
             
-            // console.log(superData)
+            console.log(superData)
 
             if(!component){
                 return await superData
@@ -30,7 +30,7 @@ const getData = async(API, component) => {
             
             component.setState({
                 loading: false,
-                data: data
+                data: superData
             })
         }catch(error){
             component.setState({
