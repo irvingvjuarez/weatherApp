@@ -33,7 +33,13 @@ class App extends React.Component{
                         temp: {}
                     }
                 ],
-                hourly: []
+                hourly: [
+                    {
+                        temp: 0,
+                        pop: 0,
+                        dt: 0
+                    }
+                ]
             }
         }
     }

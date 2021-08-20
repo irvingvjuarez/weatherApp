@@ -1,4 +1,5 @@
 import React from "react"
+import getHourFormat from "../utils/getHourFormat";
 import {
     LineChart,
     Line,
@@ -9,33 +10,33 @@ import {
 } from "recharts";
 import "./styles/Carousel.css"
 
-const data = [
-    {time: "Now", temp: "15.3"},
-    {time: "1pm", temp: "14.2"},
-    {time: "2pm", temp: "20.3"},
-    {time: "3pm", temp: "15"},
-    {time: "4pm", temp: "14.5"}
-]
-
 class Carousel extends React.Component{
     constructor(props){
         super(props)
     }
 
     render(){
+        const componentData = [...this.props.data]
+        componentData.map(item => {
+            let hourFormat = getHourFormat(item.dt)
+            item.dt = hourFormat
+        })
+
+        console.log(componentData)
+
         return(
             <article className="chart-container">
                 <LineChart
-                    width={330}
+                    width={830}
                     height={213}
-                    data={data}
-                    margin={{ top: 5, right: 0, bottom: 5, left: 0 }}
+                    data={componentData}
+                    margin={{ top: 5, right: 10, bottom: 5, left: 10 }}
                 >
 
-                    <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+                    <Line type="monotone" dataKey={this.props.name} stroke="#8884d8" />
                     <CartesianGrid stroke="#fff" />
-                    <XAxis dataKey="time" name="time"/>
-                    <YAxis type="number" name="temp" unit="°"/>
+                    <XAxis dataKey="dt" name="time"/>
+                    <YAxis type="number" name={this.props.name} unit={this.props.unit}/>
                     <Tooltip />
 
                 </LineChart>

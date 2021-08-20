@@ -1,5 +1,6 @@
 .chart-container{
     display: flex;
+    width: 350px;
     align-items: center;
     justify-content: center;
     padding: 9px 0;
@@ -7,4 +8,7 @@
 
     font-family: var(--mainFont);
     font-size: 1.4rem;
+}
+.recharts-wrapper{
+    left: 230px;
 }

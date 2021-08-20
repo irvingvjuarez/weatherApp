@@ -38,7 +38,7 @@ class Weather extends React.Component{
                     <TempOverview temp={main}/>
     
                     <Section title="Temperature over next 24hrs">
-                        <Carousel data={sentHourly}/>
+                        <Carousel data={sentHourly} unit="°" name="temp"/>
                     </Section>
     
                     <Section title="Details">
@@ -50,7 +50,7 @@ class Weather extends React.Component{
                     </Section>
     
                     <Section title="Rain probability over next 24hrs">
-                        <Carousel data={sentHourly}/>
+                        <Carousel data={sentHourly} unit="%" name="pop"/>
                     </Section>
     
                     <Section title="Next 7 days">
