@@ -22,7 +22,8 @@ class App extends React.Component{
                 coord: {},
                 weather: [
                     {}
-                ]
+                ],
+                sys: {}
             }
         }
     }
@@ -44,7 +45,7 @@ class App extends React.Component{
                         <Route path="/contact" component={Contact} />
                         <Route path="/about" component={About} />
                         <Route exact path="/weather-info" render={(props) => (
-                            <Weather data={this.state.data}/>
+                            <Weather state={this.state}/>
                         )} />
                         <Route path="/weather-info" component={Weather} />
                         <Route component={NotFound} />

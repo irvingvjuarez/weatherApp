@@ -25,12 +25,6 @@
 .home-main__map--basic-info-container{
     display: none;
 }
-.error-msg{
-    margin: 0 auto;
-    padding: 18px;
-    font-family: var(--mainFont);
-    font-size: 2rem;
-}
 
 @media screen and (min-width: 750px){
     .home-main{

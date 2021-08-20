@@ -22,7 +22,7 @@ const getData = async(API, component) => {
                 ...newData
             }
             
-            console.log(superData)
+            // console.log(superData)
 
             if(!component){
                 return await superData
@@ -69,6 +69,10 @@ const requestData = (lat, lon, component, name) => {
 }
 
 const fetchData = async (component, name) => {
+    component.setState({
+        loading: true,
+        error: null
+    })
 
     if(name){
         let API = getApi(name)
