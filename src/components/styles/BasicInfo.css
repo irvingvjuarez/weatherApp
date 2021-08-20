@@ -46,11 +46,6 @@
     font-weight: 300;
     font-size: 1.7rem;
 }
-.local-time__time{
-    font-family: var(--secondFont);
-    font-weight: 300;
-    font-size: 1.6rem;
-}
 .basic-info__local-time img{
     width: 21px;
     height: 21px;

@@ -7,14 +7,16 @@ class TempOverview extends React.Component{
     }
 
     render(){
+        const { temp, temp_max, temp_min } = this.props.temp
+
         return(
             <section className="tempOverview">
-                <h2>15°</h2>
+                <h2>{Math.round(temp)}°</h2>
 
                 <article className="tempOverview__minmax">
-                    <p className="max">16.64°C</p>
+                    <p className="max">{temp_max}°C</p>
                     <hr />
-                    <p className="min">13.97°C</p>
+                    <p className="min">{temp_min}°C</p>
                 </article>
             </section>
         )

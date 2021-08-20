@@ -13,7 +13,7 @@ class Home extends React.Component{
     }
 
     renderContent(){
-        const { coord, weather, sys, timezone_offset } = this.props.state.data
+        const { coord, weather, sys, timezone_offset, main } = this.props.state.data
 
         if(screen.width >= 750){
             return(
