@@ -16,7 +16,7 @@ class Weather extends React.Component{
 
     render(){
         const { loading, error } = this.props.state
-        const { weather, sys } = this.props.state.data
+        const { weather, sys, timezone_offset } = this.props.state.data
 
         if(loading){
             return(
@@ -29,7 +29,7 @@ class Weather extends React.Component{
         }else{
             return(
                 <section className="weather-main">
-                    <BasicInfo status={weather[0].main} country={sys.country}/>
+                    <BasicInfo status={weather[0].main} country={sys.country} time={timezone_offset}/>
                     <TempOverview />
     
                     <Section title="Temperature over time">

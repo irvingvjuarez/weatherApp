@@ -32,11 +32,8 @@ const getData = async(API, component) => {
                 loading: false,
                 data: superData
             })
-        }catch(error){
-            component.setState({
-                loading: false,
-                error: error
-            })
+        }catch(e){
+            throw e
         }
         
     }catch(error){

@@ -23,7 +23,8 @@ class App extends React.Component{
                 weather: [
                     {}
                 ],
-                sys: {}
+                sys: {},
+                timezone_offset: 0
             }
         }
     }

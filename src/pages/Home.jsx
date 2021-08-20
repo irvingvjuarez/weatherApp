@@ -5,6 +5,7 @@ import BasicInfo from "../components/BasicInfo"
 import Weather from "./Weather"
 
 import "./styles/Home.css"
+import { symbolSquare } from "d3-shape"
 
 class Home extends React.Component{
     constructor(props){
@@ -12,18 +13,18 @@ class Home extends React.Component{
     }
 
     renderContent(){
-        const { coord, weather } = this.props.state.data
+        const { coord, weather, sys, timezone_offset } = this.props.state.data
 
         if(screen.width >= 750){
             return(
                 <React.Fragment>
                     <article className="home-main__info">
-                        <Weather />
+                        <Weather state={this.props.state}/>
                     </article>
 
                     <article className="home-main__map">
                         <div className="home-main__map--basic-info-container">
-                            <BasicInfo status={weather[0].main}/>
+                            <BasicInfo status={weather[0].main} country={sys.country} time={timezone_offset}/>
                         </div>
                         <Map lat={coord.lat} lon={coord.lon}/>
                     </article>
