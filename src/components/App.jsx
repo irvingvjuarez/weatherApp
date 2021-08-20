@@ -24,7 +24,10 @@ class App extends React.Component{
                     {}
                 ],
                 sys: {},
-                timezone_offset: 0
+                main: {},
+                timezone_offset: 0,
+                wind: {},
+                daily: []
             }
         }
     }

@@ -1,11 +1,11 @@
 import React from "react"
 import "./styles/DetailCard.css"
 
-const DetailCard = () => (
+const DetailCard = (props) => (
     <article className="detail-card">
         <img src="" alt="" />
-        <p>5 km/h</p>
-        <h2>Wind</h2>
+        <p>{props.value} {props.units}</p>
+        <h2>{props.title}</h2>
     </article>
 )
 

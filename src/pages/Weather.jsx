@@ -16,7 +16,7 @@ class Weather extends React.Component{
 
     render(){
         const { loading, error } = this.props.state
-        const { weather, sys, timezone_offset, main } = this.props.state.data
+        const { weather, sys, timezone_offset, main, wind, daily } = this.props.state.data
 
         if(loading){
             return(
@@ -38,9 +38,9 @@ class Weather extends React.Component{
     
                     <Section title="Details">
                         <section className="details-container">
-                            <DetailCard />
-                            <DetailCard />
-                            <DetailCard />
+                            <DetailCard title="Humidity" value={main.humidity} units="%"/>
+                            <DetailCard title="Pressure" value={main.pressure} units="hPa"/>
+                            <DetailCard title="Wind speed" value={wind.speed} units="m/s"/>
                         </section>
                     </Section>
     
@@ -50,13 +50,11 @@ class Weather extends React.Component{
     
                     <Section title="Next 7 days">
                         <section className="dayly-forecast-container">
-                            <DayForecast />
-                            <DayForecast />
-                            <DayForecast />
-                            <DayForecast />
-                            <DayForecast />
-                            <DayForecast />
-                            <DayForecast />
+                            {daily.map(day => {
+                                if(day != daily[0]){
+                                    return (<DayForecast key={day.dt} forecast={day}/>)
+                                }
+                            })}
                         </section>
                     </Section>
                 </section>

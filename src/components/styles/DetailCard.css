@@ -3,8 +3,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 105px;
+    min-height: 115px;
     padding: 9px;
+    text-align: center;
 
     color: white;
     background-color: var(--contrastOne);
@@ -20,12 +21,12 @@
 .detail-card > p{
     font-family: var(--thirdFont);
     font-weight: 400;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 .detail-card > h2{
     font-family: var(--mainFont);
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 @media screen and (min-width: 1000px){
@@ -35,8 +36,5 @@
     }
     .detail-card > p{
         font-size: 1.7rem;
-    }
-    .detail-card > h2{
-        font-size: 1.6rem;
     }
 }
