@@ -10,9 +10,6 @@
 .day-forecast-column > img{
     width: 21px;
     height: 21px;
-
-    border: 1px solid white;
-    border-radius: 50%;
 }
 .day-forecast-column > span{
     font-family: var(--thirdFont);

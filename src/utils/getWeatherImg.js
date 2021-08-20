@@ -1,4 +1,4 @@
-const getWeatherImg = (value) => {
+const getWeatherImg = (value, blackLogo) => {
     let result
 
     switch(value){
@@ -49,6 +49,10 @@ const getWeatherImg = (value) => {
         break;
     }
 
+    if(blackLogo){
+        return `../assets/icons/${result}Black.png`
+    }
+    
     return `../assets/icons/${result}.png`
 }
 

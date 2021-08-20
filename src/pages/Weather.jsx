@@ -16,7 +16,12 @@ class Weather extends React.Component{
 
     render(){
         const { loading, error } = this.props.state
-        const { weather, sys, timezone_offset, main, wind, daily } = this.props.state.data
+        const { weather, sys, timezone_offset, main, wind, daily, hourly } = this.props.state.data
+        let sentHourly = []
+        for(let i = 0; i < 24; i++){
+            sentHourly.push(hourly[i])
+        }
+        console.log(sentHourly)
 
         if(loading){
             return(
@@ -32,20 +37,20 @@ class Weather extends React.Component{
                     <BasicInfo status={weather[0].main} country={sys.country} time={timezone_offset} />
                     <TempOverview temp={main}/>
     
-                    <Section title="Temperature over time">
-                        <Carousel />
+                    <Section title="Temperature over next 24hrs">
+                        <Carousel data={sentHourly}/>
                     </Section>
     
                     <Section title="Details">
                         <section className="details-container">
-                            <DetailCard title="Humidity" value={main.humidity} units="%"/>
-                            <DetailCard title="Pressure" value={main.pressure} units="hPa"/>
-                            <DetailCard title="Wind speed" value={wind.speed} units="m/s"/>
+                            <DetailCard title="Humidity" value={main.humidity} units="%" img="../assets/icons/humidity.png"/>
+                            <DetailCard title="Pressure" value={main.pressure} units="hPa" img="../assets/icons/gauge.png"/>
+                            <DetailCard title="Wind speed" value={wind.speed} units="m/s" img="../assets/icons/wind.png"/>
                         </section>
                     </Section>
     
-                    <Section title="Rain probability">
-                        <Carousel />
+                    <Section title="Rain probability over next 24hrs">
+                        <Carousel data={sentHourly}/>
                     </Section>
     
                     <Section title="Next 7 days">

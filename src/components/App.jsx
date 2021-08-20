@@ -27,7 +27,13 @@ class App extends React.Component{
                 main: {},
                 timezone_offset: 0,
                 wind: {},
-                daily: []
+                daily: [
+                    {
+                        weather: [],
+                        temp: {}
+                    }
+                ],
+                hourly: []
             }
         }
     }
