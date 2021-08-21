@@ -7,36 +7,33 @@ const getOneCallAPI = (data) => {
     return oneCallAPI
 }
 
-const getData = async(API, component) => {
+const getData = async(API, component, flag) => {
 
     try{
         let response = await fetch(API)
         let data = await response.json()
 
-        try{
-            let newAPI = getOneCallAPI(data)
-            let newResponse = await fetch(newAPI)
-            let newData = await newResponse.json()
-            let superData = {
-                ...data,
-                ...newData
-            }
-            
-            // console.log(superData)
-
-            if(!component){
-                return await superData
-            }
-            
-            component.setState({
-                loading: false,
-                data: superData
-            })
-        }catch(e){
-            throw e
+        let newAPI = getOneCallAPI(data)
+        let newResponse = await fetch(newAPI)
+        let newData = await newResponse.json()
+        let superData = {
+            ...data,
+            ...newData
         }
         
+        // console.log(superData)
+
+        if(!flag){
+            return await superData
+        }
+        
+        component.setState({
+            loading: false,
+            data: superData
+        })
+        
     }catch(error){
+
         component.setState({
             loading: false,
             error: error
@@ -62,7 +59,7 @@ const requestData = (lat, lon, component, name) => {
         API = API.replace("LON", lon)
     }
 
-    getData(API, component)
+    getData(API, component, true)
 }
 
 const fetchData = async (component, name) => {
@@ -73,7 +70,7 @@ const fetchData = async (component, name) => {
 
     if(name){
         let API = getApi(name)
-        let data = await getData(API)
+        let data = await getData(API, component)
         requestData(data.coord.lat, data.coord.lon, component)
     }else{
         let location = navigator.geolocation.getCurrentPosition(position => {

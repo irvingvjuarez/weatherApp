@@ -1,8 +1,9 @@
 .chart-container{
     display: flex;
-    width: 350px;
     align-items: center;
     justify-content: center;
+    width: 350px;
+    margin: 0 auto;
     padding: 9px 0;
     overflow-x: scroll;
 

@@ -6,6 +6,7 @@ import Section from "../components/Section"
 import DetailCard from "../components/DetailCard"
 import DayForecast from "../components/DayForecast"
 import Loader from "../components/Loader"
+
 import getHourFormat from "../utils/getHourFormat"
 
 import "./styles/Weather.css"
@@ -17,25 +18,30 @@ class Weather extends React.Component{
 
     render(){
         const { loading, error } = this.props.state
-        const { weather, sys, timezone_offset, main, wind, daily, hourly } = this.props.state.data
-        for(let i = 0; i < 24; i++){
-            hourly.pop()
-        }
-
-        hourly.map(item => {
-            let newFormat = getHourFormat(item.dt)
-            item.dt = String(newFormat)
-        })
+        
 
         if(loading){
             return(
                 <Loader />
             )
         }else if(error){
-            <div className="error-msg">
-                <h3>Error: {error.message}</h3>
-            </div>
+            return(
+                <div className="error-msg">
+                    <h3>Error: City not found</h3>
+                </div>
+            )
         }else{
+            const { weather, sys, timezone_offset, main, wind, daily, hourly } = this.props.state.data
+            for(let i = 0; i < 24; i++){
+                hourly.pop()
+            }
+
+            hourly.map(item => {
+                let time = getHourFormat(item.dt)
+                item.dt = String(time)
+                item.pop *= 100
+            })
+
             return(
                 <section className="weather-main">
                     <BasicInfo status={weather[0].main} country={sys.country} time={timezone_offset} />
