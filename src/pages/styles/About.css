@@ -1,0 +1,27 @@
+.about-main{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 9px;
+    font-family: var(--secondFont);
+}
+.about-main p{
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+.about-main h2{
+    margin: 20px 0 9px 0;
+    font-size: 2.5rem;
+}
+
+@media screen and (min-width: 750px){
+    .about-main{
+        padding: 50px 30px;
+    }
+    .about-main p{
+        font-size: 2.2rem;
+        line-height: 2.9rem;
+    }
+    .about-main h2{
+        font-size: 2.7rem;
+    }
+}
