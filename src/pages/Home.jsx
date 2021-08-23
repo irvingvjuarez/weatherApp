@@ -5,7 +5,6 @@ import BasicInfo from "../components/BasicInfo"
 import Weather from "./Weather"
 
 import "./styles/Home.css"
-import { symbolSquare } from "d3-shape"
 
 class Home extends React.Component{
     constructor(props){

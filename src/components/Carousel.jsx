@@ -5,8 +5,7 @@ import {
     CartesianGrid,
     XAxis,
     YAxis,
-    Tooltip,
-    ResponsiveContainer
+    Tooltip
 } from "recharts";
 import "./styles/Carousel.css"
 
