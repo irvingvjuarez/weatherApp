@@ -76,8 +76,16 @@ const fetchData = async (component, name) => {
         let location = navigator.geolocation.getCurrentPosition(position => {
             let lon = position.coords.longitude
             let lat = position.coords.latitude
-        
+
             requestData(lat, lon, component)
+        }, positionError => {
+            let search = document.querySelector(".header__searchButton")
+            search.click()
+
+            component.setState({
+                loading: false,
+                error: new Error("Search a city")
+            })
         })
     }
 

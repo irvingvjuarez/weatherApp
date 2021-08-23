@@ -47,7 +47,7 @@ class Home extends React.Component{
         }else if(error){
             return(
                 <div className="error-msg">
-                    <h3>Error: City not found</h3>
+                    <h3>Error: {error.message}</h3>
                 </div>
             )
         }else{
