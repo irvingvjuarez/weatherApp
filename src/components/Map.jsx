@@ -159,7 +159,7 @@ class Map extends React.Component{
             let index = this.coordinates.length - 1
     
             if(this.coordinates[index] > this.coordinates[index - 1]){
-                if(index < 8){
+                if(index < 4){
                     container.childNodes[0].style.left = `${index + 10}px`
                 }else{
                     this.moveEnd(container)
