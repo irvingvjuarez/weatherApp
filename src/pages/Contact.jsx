@@ -32,7 +32,7 @@ class Contact extends React.Component{
                 data: data
             })
         }catch(error){
-            console.log(error)
+            //
         }
     }
 
@@ -53,9 +53,8 @@ class Contact extends React.Component{
                             }
         
                             if(flag){
-                                console.log(repo)
                                 return(
-                                    <RepoCard key={repo.id} title={repo.name} link={repo.url} description={repo.description} />
+                                    <RepoCard key={repo.id} title={repo.name} link={repo.html_url} description={repo.description} />
                                 )
                             }
                         })}

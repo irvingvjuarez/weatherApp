@@ -8,7 +8,7 @@ const RepoCard = (props) => {
         <div className="repo-main">
             <div className="repo-main__header">
                 <img src={repoLogo} alt="repo logo" />
-                <a href={props.link}>{props.title}</a>
+                <a href={props.link} target="_blank">{props.title}</a>
             </div>
 
             <div className="repo-main__body">
