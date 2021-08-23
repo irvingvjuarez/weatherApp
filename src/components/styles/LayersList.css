@@ -1,4 +1,7 @@
 .layers-list{
+    position: fixed;
+    right: 5px;
+    bottom: 58px;
     width: 130px;
     height: 200px;
     padding: 12px;

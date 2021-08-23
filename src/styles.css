@@ -16,6 +16,7 @@ html{
     font-size: 62.5%;
 }
 #root{
+    position: relative;
     width: 100%;
     height: 100vh;
 }
@@ -47,4 +48,10 @@ html{
     padding: 18px;
     font-family: var(--mainFont);
     font-size: 2rem;
+}
+
+@media screen and (min-width: 750px){
+    #root{
+        position: initial;
+    }
 }

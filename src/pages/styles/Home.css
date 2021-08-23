@@ -14,7 +14,6 @@
     display: none;
 }
 .home-main__map{
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,13 +24,23 @@
 .home-main__map--basic-info-container{
     display: none;
 }
+.mapboxgl-map{
+    position: static;
+}
+.mapboxgl-canvas{
+    position: relative;
+}
 
 @media screen and (min-width: 750px){
     .home-main{
+        position: relative;
         height: calc(100% - 55px);
     }
     .home-main__info{
         display: flex;
+    }
+    .home-main__map{
+        position: relative;
     }
     .home-main__map--basic-info-container{
         position: absolute;
