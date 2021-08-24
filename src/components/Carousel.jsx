@@ -9,7 +9,7 @@ import {
 } from "recharts";
 import "./styles/Carousel.css"
 
-class Carousel extends React.Component{
+class Carousel extends React.PureComponent {
     constructor(props){
         super(props)
     }
