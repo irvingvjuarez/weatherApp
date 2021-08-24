@@ -11,8 +11,6 @@ import getHourFormat from "../utils/getHourFormat"
 
 import "./styles/Weather.css"
 
-let flag = 0
-
 class Weather extends React.Component{
     constructor(props){
         super(props)
@@ -33,14 +31,13 @@ class Weather extends React.Component{
                 </div>
             )
         }else{
-            flag++
-            const { weather, sys, timezone_offset, main, wind, daily, hourly } = this.props.state.data
 
-            if(flag <= 1){
+            const { weather, sys, timezone_offset, main, wind, daily, hourly } = this.props.state.data
+            if(hourly.length > 24){
                 for(let i = 0; i < 24; i++){
                     hourly.pop()
                 }
-    
+
                 hourly.map(item => {
                     let time = getHourFormat(item.dt)
                     item.dt = String(time)

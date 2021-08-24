@@ -18,7 +18,7 @@ class Home extends React.Component{
             return(
                 <React.Fragment>
                     <article className="home-main__info">
-                        <Weather state={this.props.state}/>
+                        <Weather state={this.props.state} />
                     </article>
 
                     <article className="home-main__map">

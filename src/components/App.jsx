@@ -41,7 +41,8 @@ class App extends React.Component{
                     }
                 ]
             }
-        }
+        },
+        this.flag = 0
     }
 
     componentDidMount(){
@@ -61,7 +62,7 @@ class App extends React.Component{
                         <Route path="/contact" component={Contact} />
                         <Route path="/about" component={About} />
                         <Route exact path="/weather-info" render={(props) => (
-                            <Weather state={this.state}/>
+                            <Weather state={this.state} />
                         )} />
                         <Route path="/weather-info" component={Weather} />
                         <Route component={NotFound} />
