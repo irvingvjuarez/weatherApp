@@ -3,16 +3,16 @@
     right: 5px;
     bottom: 58px;
     width: 130px;
-    height: 200px;
-    padding: 12px;
+    padding: 12px 12px 30px 12px;
     background-color: rgba(255,255,255,0.7);
     float: right;
     margin-right: 10px;
     transform: translateY(17px);
-    line-height: 3rem;
     pointer-events: auto;
+    overflow: hidden;
 }
 .list-item{
+    padding: 5px 0;
     font-family: var(--mainFont);
     font-weight: 500;
     font-size: 1.5rem;
