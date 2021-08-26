@@ -79,13 +79,7 @@ const fetchData = async (component, name) => {
 
             requestData(lat, lon, component)
         }, positionError => {
-            let search = document.querySelector(".header__searchButton")
-            search.click()
-
-            component.setState({
-                loading: false,
-                error: new Error("Search a city")
-            })
+            fetchData(component, "Mexico City")
         })
     }
 
