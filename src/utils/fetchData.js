@@ -1,89 +1,93 @@
+
 const getOneCallAPI = (data) => {
-    let lon = data.coord.lon
-    let lat = data.coord.lat
-    let oneCallAPI = process.env.WeatherOneCallAPI.replace("LAT", lat)
-    oneCallAPI = oneCallAPI.replace("LON", lon)
+  const { lon, lat } = data.coord;
+  let oneCallAPI = process.env.WeatherOneCallAPI.replace('LAT', lat);
+  oneCallAPI = oneCallAPI.replace('LON', lon);
 
-    return oneCallAPI
-}
+  return oneCallAPI;
+};
 
-const getData = async(API, component, flag) => {
+const getData = async (API, component, flag) => {
+  console.log("API", API)
 
-    try{
-        let response = await fetch(API)
-        let data = await response.json()
+  try {
+    const response = await fetch(API);
+    const data = await response.json();
 
-        let newAPI = getOneCallAPI(data)
-        let newResponse = await fetch(newAPI)
-        let newData = await newResponse.json()
-        let superData = {
-            ...data,
-            ...newData
-        }
-        
-        // console.log(superData)
+    const newAPI = getOneCallAPI(data);
 
-        if(!flag){
-            return await superData
-        }
-        
-        component.setState({
-            loading: false,
-            data: superData
-        })
-        
-    }catch(error){
+    console.log("NewAPI", newAPI)
 
-        component.setState({
-            loading: false,
-            error: error
-        })
-    }
-}
+    const newResponse = await fetch(newAPI);
+    const newData = await newResponse.json();
+
+    const superData = {
+      ...data,
+      ...newData,
+    };
+
+    component.setState({
+      loading: false,
+      data: superData,
+    });
+    // if (flag) {
+    // } else {
+    //   return await superData;
+    // }
+
+  } catch (error) {
+    console.log("Error", error)
+
+    component.setState({
+      loading: false,
+      error,
+    });
+  }
+};
 
 const getApi = (name) => {
-    let regex = /\s/
-    name = name.replace(regex, "%20")
-    let API = process.env.WeatherAPIName.replace("NAME", name)
+  const regex = /\s/;
+  name.replace(regex, '%20');
+  const API = process.env.WeatherAPIName.replace('NAME', name);
 
-    return API
-}
+  return API;
+};
 
 const requestData = (lat, lon, component, name) => {
-    let API
+  let API;
 
-    if(name){
-        API = getApi(name)
-    }else{
-        API = process.env.WeatherAPICoor.replace("LAT", lat)
-        API = API.replace("LON", lon)
-    }
+  if (name) {
+    API = getApi(name);
+  } else {
+    API = process.env.WeatherAPICoor.replace('LAT', lat);
+    API = API.replace('LON', lon);
+  }
 
-    getData(API, component, true)
-}
+  getData(API, component, true);
+};
 
 const fetchData = async (component, name) => {
-    component.setState({
-        loading: true,
-        error: null
-    })
+  component.setState({
+    loading: true,
+    error: null,
+  });
 
-    if(name){
-        let API = getApi(name)
-        let data = await getData(API, component)
-        requestData(data.coord.lat, data.coord.lon, component)
-    }else{
-        let location = navigator.geolocation.getCurrentPosition(position => {
-            let lon = position.coords.longitude
-            let lat = position.coords.latitude
+  if (name) {
+    const API = getApi(name);
+    const data = await getData(API, component);
 
-            requestData(lat, lon, component)
-        }, positionError => {
-            fetchData(component, "Mexico City")
-        })
-    }
+    requestData(data.coord.lat, data.coord.lon, component);
+  } else {
+    window.navigator.geolocation.getCurrentPosition((position) => {
+      const lon = position.coords.longitude;
+      const lat = position.coords.latitude;
 
+      requestData(lat, lon, component);
+    }, (positionError) => {
+      fetchData(component, 'Mexico City');
+    });
+  }
 
-}
+};
 
-export default fetchData
+export default fetchData;
