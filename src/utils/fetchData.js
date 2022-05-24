@@ -8,15 +8,12 @@ const getOneCallAPI = (data) => {
 };
 
 const getData = async (API, component, flag) => {
-  console.log("API", API)
 
   try {
     const response = await fetch(API);
     const data = await response.json();
 
     const newAPI = getOneCallAPI(data);
-
-    console.log("NewAPI", newAPI)
 
     const newResponse = await fetch(newAPI);
     const newData = await newResponse.json();
@@ -30,13 +27,8 @@ const getData = async (API, component, flag) => {
       loading: false,
       data: superData,
     });
-    // if (flag) {
-    // } else {
-    //   return await superData;
-    // }
 
   } catch (error) {
-    console.log("Error", error)
 
     component.setState({
       loading: false,

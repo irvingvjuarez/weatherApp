@@ -34,6 +34,9 @@
     transform: translateY(120%);
     color: black;
 }
+.basic-info__local-time > img {
+  width: 25px;
+}
 .basic-info__local-time > *{
     margin-left: 6px;
 }
@@ -47,10 +50,6 @@
     font-family: var(--secondFont);
     font-weight: 300;
     font-size: 1.7rem;
-}
-.basic-info__local-time img{
-    width: 21px;
-    height: 21px;
 }
 
 @media screen and (min-width: 750px){
@@ -68,9 +67,6 @@
         transform: none;
         color: white;
     }
-    .basic-info__local-time img{
-        width: 23px;
-    }
 }
 
 @media screen and (min-width: 1000px){
@@ -85,5 +81,5 @@
     }
     .sku-data__title{
         font-size: 2.2rem;
-    } 
+    }
 }
