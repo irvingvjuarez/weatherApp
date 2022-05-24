@@ -1,5 +1,6 @@
 import React from "react"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
+import { initialState } from "../globalState"
 
 import Layout from "../components/Layout"
 import Home from "../pages/Home"
@@ -13,32 +14,7 @@ import fetchData from "../utils/fetchData"
 class App extends React.Component{
   constructor(props){
     super(props)
-    this.state = {
-      loading: true,
-      error: null,
-      data: {
-        name: "",
-        coord: {},
-        weather: [{}],
-        sys: {},
-        main: {},
-        timezone_offset: 0,
-        wind: {},
-        daily: [
-          {
-            weather: [],
-            temp: {}
-          }
-        ],
-        hourly: [
-          {
-            temp: 0,
-            pop: 0,
-            dt: 0
-          }
-        ]
-      }
-    },
+    this.state = initialState(),
     this.flag = 0
   }
 
