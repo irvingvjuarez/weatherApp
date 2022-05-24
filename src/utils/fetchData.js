@@ -1,3 +1,5 @@
+import { getApiRequest } from "./getApiRequest";
+
 const getOneCallAPI = (data) => {
   const { lon, lat } = data.coord;
   let oneCallAPI = process.env.WeatherOneCallAPI.replace('LAT', lat);
@@ -36,19 +38,13 @@ const getData = async (API, component, flag) => {
   }
 };
 
-const getApi = (name) => {
-  const regex = /\s/;
-  name.replace(regex, '%20');
-  const API = process.env.WeatherAPIName.replace('NAME', name);
 
-  return API;
-};
 
 const requestData = (lat, lon, component, name) => {
   let API;
 
   if (name) {
-    API = getApi(name);
+    API = getApiRequest(name);
   } else {
     API = process.env.WeatherAPICoor.replace('LAT', lat);
     API = API.replace('LON', lon);
@@ -63,22 +59,20 @@ const fetchData = async (component, name) => {
     error: null,
   });
 
-  if (name) {
-    const API = getApi(name);
-    const data = await getData(API, component);
+  /** Here we are assumming the name will be always there */
+  const API = getApiRequest(name);
+  const data = await getData(API, component);
 
-    requestData(data.coord.lat, data.coord.lon, component);
-  } else {
-    window.navigator.geolocation.getCurrentPosition((position) => {
-      const lon = position.coords.longitude;
-      const lat = position.coords.latitude;
+  requestData(data.coord.lat, data.coord.lon, component);
 
-      requestData(lat, lon, component);
-    }, (positionError) => {
-      fetchData(component, 'Mexico City');
-    });
-  }
+  // window.navigator.geolocation.getCurrentPosition((position) => {
+  //   const lon = position.coords.longitude;
+  //   const lat = position.coords.latitude;
 
+  //   requestData(lat, lon, component);
+  // }, (positionError) => {
+  //   fetchData(component, 'Mexico City');
+  // });
 };
 
 export default fetchData;
