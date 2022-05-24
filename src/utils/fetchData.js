@@ -1,4 +1,3 @@
-
 const getOneCallAPI = (data) => {
   const { lon, lat } = data.coord;
   let oneCallAPI = process.env.WeatherOneCallAPI.replace('LAT', lat);

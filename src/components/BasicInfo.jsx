@@ -27,7 +27,6 @@ class BasicInfo extends React.Component{
                         <h3>Local time: </h3>
                         <span className="local-time__date">{localTime.substr(0,25)}</span>
                         <img src={`https://countryflagsapi.com/png/${this.props.country}`} alt={`${this.props.country} flag`} />
-                        {/* <img src={`https://www.countryflags.io/${this.props.country}/shiny/64.png`} alt="country flag" /> */}
                     </div>
                 </article>
             </section>
