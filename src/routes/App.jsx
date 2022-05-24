@@ -9,17 +9,11 @@ import Contact from "../pages/Contact"
 import Weather from "../pages/Weather"
 import NotFound from "../pages/NotFound"
 
-import fetchData from "../utils/fetchData"
-
 class App extends React.Component{
   constructor(props){
     super(props)
     this.state = initialState(),
     this.flag = 0
-  }
-
-  componentDidMount(){
-    fetchData(this, "Mexico City")
   }
 
   render(){
@@ -29,11 +23,10 @@ class App extends React.Component{
       <BrowserRouter>
         <Layout location={name} component={this} >
           <Switch>
-            <Route exact path="/" render={() => <Home state={this.state} />}/>
+            <Route exact path="/" render={() => <Home component={this} />}/>
             <Route path="/contact" component={Contact} />
             <Route path="/about" component={About} />
             <Route exact path="/weather-info" render={() => <Weather state={this.state} />} />
-            <Route path="/weather-info" component={Weather} />
             <Route component={NotFound} />
           </Switch>
         </Layout>
