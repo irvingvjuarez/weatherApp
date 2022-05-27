@@ -1,57 +1,6 @@
+import { API_BY_COORD, WEATHER_ONE_CALL_API } from "../globals";
 import { getApiRequest } from "./getApiRequest";
-
-const getOneCallAPI = (data) => {
-  const { lon, lat } = data.coord;
-  let oneCallAPI = process.env.WeatherOneCallAPI.replace('LAT', lat);
-  oneCallAPI = oneCallAPI.replace('LON', lon);
-
-  return oneCallAPI;
-};
-
-const getData = async (API, component, flag) => {
-
-  try {
-    const response = await fetch(API);
-    const data = await response.json();
-
-    const newAPI = getOneCallAPI(data);
-
-    const newResponse = await fetch(newAPI);
-    const newData = await newResponse.json();
-
-    const superData = {
-      ...data,
-      ...newData,
-    };
-
-    component.setState({
-      loading: false,
-      data: superData,
-    });
-
-  } catch (error) {
-
-    component.setState({
-      loading: false,
-      error,
-    });
-  }
-};
-
-
-
-const requestData = (lat, lon, component, name) => {
-  let API;
-
-  if (name) {
-    API = getApiRequest(name);
-  } else {
-    API = process.env.WeatherAPICoor.replace('LAT', lat);
-    API = API.replace('LON', lon);
-  }
-
-  getData(API, component, true);
-};
+import { newRequestData } from "./newRequestData"
 
 const fetchData = async (component, name) => {
   component.setState({
@@ -59,20 +8,42 @@ const fetchData = async (component, name) => {
     error: null,
   });
 
-  /** Here we are assumming the name will be always there */
-  const API = getApiRequest(name);
-  const data = await getData(API, component);
+  const locationCoord = localStorage.getItem("locationCoord")
 
-  requestData(data.coord.lat, data.coord.lon, component);
+  if(locationCoord){
+    const { longitude, latitude } = JSON.parse(locationCoord)
+    const APIs = [
+      API_BY_COORD.replace("LAT", latitude).replace("LON", longitude),
+      WEATHER_ONE_CALL_API.replace("LAT", latitude).replace("LON", longitude)
+    ]
 
-  // window.navigator.geolocation.getCurrentPosition((position) => {
-  //   const lon = position.coords.longitude;
-  //   const lat = position.coords.latitude;
+    Promise.all(APIs.map(api => fetch(api)))
+      .then(results => Promise.all(results.map(res => res.json())))
+      .then(datas => {
+        let locationData = {}
+        datas.forEach(data => {
+          locationData = {
+            ...locationData,
+            ...data
+          }
+        })
+        component.setState({
+          loading: false,
+          data: {...locationData}
+        })
+      })
+  }else{
+    window.navigator.geolocation.getCurrentPosition(position => {
+      const { longitude, latitude } = position.coords;
+      const coordinates = JSON.stringify({longitude, latitude})
+      localStorage.setItem("locationCoord", coordinates)
+      fetchData(component, name)
+    }, () => {
+      const API = getApiRequest(name);
+      newRequestData(API, component)
+    });
+  }
 
-  //   requestData(lat, lon, component);
-  // }, (positionError) => {
-  //   fetchData(component, 'Mexico City');
-  // });
 };
 
 export default fetchData;

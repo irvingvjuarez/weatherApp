@@ -6,6 +6,7 @@ import Weather from "./Weather"
 
 import "./styles/Home.css"
 import fetchData from "../utils/fetchData"
+import { RANDOM_CITIES } from "../globals"
 
 class Home extends React.Component{
   constructor(props){
@@ -13,7 +14,9 @@ class Home extends React.Component{
   }
 
   componentDidMount(){
-    fetchData(this.props.component, "Mexico City")
+    const size = RANDOM_CITIES.length
+    const choosenCity = RANDOM_CITIES[Math.floor(Math.random() * size)]
+    fetchData(this.props.component, choosenCity)
   }
 
   renderContent(){
