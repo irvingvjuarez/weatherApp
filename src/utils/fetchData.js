@@ -37,6 +37,7 @@ const fetchData = async (component, name) => {
       const { longitude, latitude } = position.coords;
       const coordinates = JSON.stringify({longitude, latitude})
       localStorage.setItem("locationCoord", coordinates)
+      fetchData(component, name)
     }, () => {
       const API = getApiRequest(name);
       newRequestData(API, component)
