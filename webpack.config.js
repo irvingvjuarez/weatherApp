@@ -47,6 +47,7 @@ module.exports = {
     }),
     new Dotenv(),
   ],
+  systemvars: true,
   devServer: {
     historyApiFallback: true,
   },

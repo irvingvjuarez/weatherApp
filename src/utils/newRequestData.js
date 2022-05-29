@@ -23,7 +23,7 @@ export const newRequestData = async (API, component) => {
     .catch(error => {
       component({
         loading: false,
-        error
+        error: true
       })
     })
 };

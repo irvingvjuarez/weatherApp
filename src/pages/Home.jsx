@@ -49,7 +49,7 @@ class Home extends React.Component{
 
     if(error) return (
       <div className="error-msg">
-        <h3>Error: {error.message}</h3>
+        <h3>An error has ocurred. Try later</h3>
       </div>
     )
 
