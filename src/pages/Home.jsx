@@ -7,6 +7,7 @@ import Weather from "./Weather"
 import "./styles/Home.css"
 import fetchData from "../utils/fetchData"
 import { RANDOM_CITIES } from "../globals"
+import { ErrorView } from "../components/ErrorView"
 
 class Home extends React.Component{
   constructor(props){
@@ -16,7 +17,15 @@ class Home extends React.Component{
   componentDidMount(){
     const size = RANDOM_CITIES.length
     const choosenCity = RANDOM_CITIES[Math.floor(Math.random() * size)]
-    fetchData(this.props.component, choosenCity)
+
+    /**
+     * Below code is to test error escenario
+    */
+    // fetchData(this.props.component, choosenCity)
+    this.props.component.setState({
+      loading: false,
+      error: true
+    })
   }
 
   renderContent(){
@@ -47,11 +56,7 @@ class Home extends React.Component{
 
     if(loading) return <Loader />
 
-    if(error) return (
-      <div className="error-msg">
-        <h3>An error has ocurred. Try later</h3>
-      </div>
-    )
+    if(error) return <ErrorView />
 
     return(
       <section className="home-main">
