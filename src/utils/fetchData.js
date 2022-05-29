@@ -32,6 +32,12 @@ const fetchData = async (component, name) => {
           data: {...locationData}
         })
       })
+      .catch(() => {
+        component.setState({
+          loading: false,
+          error: true
+        })
+      })
   }else{
     window.navigator.geolocation.getCurrentPosition(position => {
       const { longitude, latitude } = position.coords;
