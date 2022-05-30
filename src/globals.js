@@ -12,5 +12,6 @@ export const RANDOM_CITIES = [
   "Paris",
   "Washington",
   "Madrid",
-  "Venice"
+  "Venice",
+  "Lima"
 ]

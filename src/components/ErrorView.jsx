@@ -1,6 +1,9 @@
 import React from "react"
 import { RANDOM_CITIES } from "../globals"
 
+// css
+import "./styles/ErrorView.css";
+
 const ErrorView = () => {
   return(
     <section className="error-view">
@@ -10,7 +13,10 @@ const ErrorView = () => {
       <article className="error-view__wrapper">
         {RANDOM_CITIES.map(city => (
           <div className="error-view__item" key={city}>
-            {city}
+            {/* <img src="" alt="" /> */}
+            <span className="error-view__item--text">
+              {city}
+            </span>
           </div>
         ))}
       </article>
