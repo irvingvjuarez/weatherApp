@@ -17,15 +17,7 @@ class Home extends React.Component{
   componentDidMount(){
     const size = RANDOM_CITIES.length
     const choosenCity = RANDOM_CITIES[Math.floor(Math.random() * size)].name
-
-    /**
-     * Below code is to test error escenario
-    */
-    // fetchData(this.props.component, choosenCity)
-    this.props.component.setState({
-      loading: false,
-      error: true
-    })
+    fetchData(this.props.component, choosenCity)
   }
 
   renderContent(){
@@ -56,7 +48,7 @@ class Home extends React.Component{
 
     if(loading) return <Loader />
 
-    if(error) return <ErrorView />
+    if(error) return <ErrorView component={this.props.component} />
 
     return(
       <section className="home-main">
