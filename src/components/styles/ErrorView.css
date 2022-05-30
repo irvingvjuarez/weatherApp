@@ -1,7 +1,7 @@
 .error-view{
   width: 90%;
   max-width: 900px;
-  margin: 20px auto;
+  margin: 20px auto 0 auto;
   text-align: center;
   font-size: 1.6rem;
 }
@@ -14,17 +14,23 @@
 }
 .error-view__wrapper{
   width: 100%;
-  margin-top: 20px;
+  margin: 20px 0;
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
 }
 .error-view__item{
   position: relative;
-  border: 1px solid var(--primaryColor);
   border-radius: 9px;
   height: 125px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--primary-color);
 }
+.error-view__item img{
+  width: 100%;
+}
+
 .error-view__item--text{
   position: absolute;
   bottom: 0;

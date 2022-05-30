@@ -16,7 +16,7 @@ class Home extends React.Component{
 
   componentDidMount(){
     const size = RANDOM_CITIES.length
-    const choosenCity = RANDOM_CITIES[Math.floor(Math.random() * size)]
+    const choosenCity = RANDOM_CITIES[Math.floor(Math.random() * size)].name
 
     /**
      * Below code is to test error escenario

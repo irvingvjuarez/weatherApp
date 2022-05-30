@@ -12,10 +12,10 @@ const ErrorView = () => {
 
       <article className="error-view__wrapper">
         {RANDOM_CITIES.map(city => (
-          <div className="error-view__item" key={city}>
-            {/* <img src="" alt="" /> */}
+          <div className="error-view__item" key={city.id}>
+            <img src={city.image} alt={city.name} title={city.name} />
             <span className="error-view__item--text">
-              {city}
+              {city.name}
             </span>
           </div>
         ))}
