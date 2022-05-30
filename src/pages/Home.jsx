@@ -7,6 +7,7 @@ import Weather from "./Weather"
 import "./styles/Home.css"
 import fetchData from "../utils/fetchData"
 import { RANDOM_CITIES } from "../globals"
+import { ErrorView } from "../components/ErrorView"
 
 class Home extends React.Component{
   constructor(props){
@@ -15,7 +16,7 @@ class Home extends React.Component{
 
   componentDidMount(){
     const size = RANDOM_CITIES.length
-    const choosenCity = RANDOM_CITIES[Math.floor(Math.random() * size)]
+    const choosenCity = RANDOM_CITIES[Math.floor(Math.random() * size)].name
     fetchData(this.props.component, choosenCity)
   }
 
@@ -47,11 +48,7 @@ class Home extends React.Component{
 
     if(loading) return <Loader />
 
-    if(error) return (
-      <div className="error-msg">
-        <h3>An error has ocurred. Try later</h3>
-      </div>
-    )
+    if(error) return <ErrorView component={this.props.component} />
 
     return(
       <section className="home-main">

@@ -2,6 +2,10 @@ import { WEATHER_ONE_CALL_API } from "../globals";
 let firstData
 
 export const newRequestData = async (API, component) => {
+  component.setState({
+    loading: true
+  })
+
   fetch(API)
     .then(res => res.json())
     .then(data => {
@@ -14,6 +18,7 @@ export const newRequestData = async (API, component) => {
     .then(finalData => {
       component.setState({
         loading: false,
+        error: false,
         data: {
           ...firstData,
           ...finalData
