@@ -22,10 +22,10 @@
     width: 185px;
     height: 100vh;
     padding: 0 9px;
-    background-color: rgba(255,255,255,0.9);
+    background-color: white;
     border-radius: 0 5px 5px 0;
     font-size: 1.6rem;
-    
+
     transition: left 1s;
 }
 .nav__ul-mobile a{
