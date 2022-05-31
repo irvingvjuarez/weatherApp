@@ -15,6 +15,9 @@
   flex-direction: column;
   align-items: center;
   height: inherit;
+  padding-right: 10px;
+
+  border-right: 1px solid var(--borderColor);
 }
 .homeSkeleton__data--hero{
   width: 280px;
@@ -53,8 +56,11 @@
 
 
 @media screen and (min-width: 750px){
-  .homeSkeleton > article {
-    width: 50%;
+  .homeSkeleton > article:nth-child(1) {
+    width: 25%;
+  }
+  .homeSkeleton > article:nth-child(2){
+    width: 75%;
   }
 
   .homeSkeleton__data{
@@ -75,14 +81,14 @@
   border-radius: 5px;
 }
 .skeleton.header{
-  background: rgba(200, 199, 199);
+  background: var(--borderColor);
   width: 80%;
   margin-bottom: 10px;
   height: 18px;
 }
 .skeleton.container{
   width: 98%;
-  border: 1px solid rgba(200, 199, 199);
+  border: 1px solid var(--borderColor);
   background: none;
   height: 150px;
 

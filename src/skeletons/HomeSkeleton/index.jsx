@@ -42,6 +42,16 @@ const HomeSkeleton = () => {
           </div>
         </div>
 
+        <div className="homeSkeleton__data--section">
+          <span className="skeleton header"></span>
+          <div className="skeleton container">
+            <span className="skeleton"></span>
+            <span className="skeleton"></span>
+            <span className="skeleton"></span>
+            <span className="skeleton"></span>
+          </div>
+        </div>
+
       </article>
 
       <article className="homeSkeleton__map">

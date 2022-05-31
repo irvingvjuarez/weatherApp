@@ -1,6 +1,7 @@
 :root{
   --primaryColor: #133E59;
   --secondaryColor: #7ACBFF;
+  --borderColor: rgba(200, 199, 199);
   --contrastOne: #546DFD;
   --mainFont: 'Montserrat', sans-serif;
   --secondFont: 'Roboto', sans-serif;
