@@ -1,0 +1,122 @@
+.homeSkeleton{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90vh;
+  padding: 0 0 0 5px;
+}
+.homeSkeleton > article {
+  width: 100%;
+}
+
+/* Data section */
+.homeSkeleton__data{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  height: inherit;
+}
+.homeSkeleton__data--hero{
+  width: 280px;
+  padding-top: 40px;
+}
+.homeSkeleton__data--hero > * {
+  margin-bottom: 9px;
+}
+
+.homeSkeleton__data--section{
+  width: 100%;
+  max-width: 600px;
+  padding-top: 30px;
+}
+
+.homeSkeleton__data--wrapper{
+  display: flex;
+  flex-direction: column;
+}
+.homeSkeleton__data--wrapper > div{
+  display: flex;
+  margin-bottom: 9px;
+}
+
+
+/* Map section */
+.homeSkeleton__map{
+  text-align: center;
+}
+.homeSkeleton__map--message{
+  font-size: 1.6rem;
+  font-family: var(--mainFont);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+
+@media screen and (min-width: 750px){
+  .homeSkeleton > article {
+    width: 50%;
+  }
+
+  .homeSkeleton__data{
+    display: flex;
+  }
+}
+
+
+/* General Skeleton class */
+.skeleton {
+  background: linear-gradient(90deg, rgba(250,250,250,1), rgba(200, 199, 199));
+  background-size: 400% 400%;
+  animation: loadingAnimation 3s ease-in-out infinite;
+
+  display: block;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+}
+.skeleton.header{
+  background: rgba(200, 199, 199);
+  width: 80%;
+  margin-bottom: 10px;
+  height: 18px;
+}
+.skeleton.container{
+  width: 98%;
+  border: 1px solid rgba(200, 199, 199);
+  background: none;
+  height: 150px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 70px);
+  padding: 10px;
+  grid-template-rows: auto;
+  gap: 10px;
+  place-items: flex-end;
+}
+.skeleton.container > span:nth-child(1){
+  height: 100%;
+}
+.skeleton.container > span:nth-child(2){
+  height: 50%;
+}
+.skeleton.container > span:nth-child(3){
+  height: 25%;
+}
+
+.skeleton.bullet{
+  width: 16px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+@keyframes loadingAnimation {
+  0%{
+    background-position: 0% 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0% 50%;
+  }
+}

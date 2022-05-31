@@ -8,6 +8,7 @@ import "./styles/Home.css"
 import fetchData from "../utils/fetchData"
 import { RANDOM_CITIES } from "../globals"
 import { ErrorView } from "../components/ErrorView"
+import { HomeSkeleton } from "../skeletons/HomeSkeleton"
 
 class Home extends React.Component{
   constructor(props){
@@ -46,7 +47,7 @@ class Home extends React.Component{
   render(){
     const { loading, error } = this.props.component.state
 
-    if(loading) return <Loader />
+    if(loading) return <HomeSkeleton />
 
     if(error) return <ErrorView component={this.props.component} />
 
