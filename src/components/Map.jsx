@@ -31,7 +31,7 @@ class Map extends React.Component{
 
         map.addControl(LayersControl, "bottom-right")
         map.addControl(LayersList, "bottom-right")
-        
+
         map.on("load", () => {
             let layersBtn = document.querySelector(".layer-control-container")
             layersBtn.addEventListener("click", this.handleLayersBtnClick)
@@ -89,7 +89,8 @@ class Map extends React.Component{
             map.addSource(layer.id, {
                 'type': 'raster',
                 'tiles': [
-                    `${process.env.MapTileAPI.replace("LAYER", layer.layer)}`
+                    // `${process.env.MapTileAPI.replace("LAYER", layer.layer)}`
+                    `https://api.mapbox.com/v4/${layer.layer}/1/0/0@2x.jpg90?access_token=` + process.env.MapTileAPI
                 ]
             })
         })
@@ -154,10 +155,10 @@ class Map extends React.Component{
         let container = this.getRightBtn(e.target)
         let xcoord = e.screenX || e.changedTouches[0].screenX
         this.coordinates.push(xcoord)
-        
+
         if(this.coordinates.length > 0){
             let index = this.coordinates.length - 1
-    
+
             if(this.coordinates[index] > this.coordinates[index - 1]){
                 if(index < 4){
                     container.childNodes[0].style.left = `${index + 10}px`
