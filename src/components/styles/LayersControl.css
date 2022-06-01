@@ -27,16 +27,17 @@
     background-image: url("../../assets/icons/layers.svg");
 }
 .layer-menu{
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 3px 15px;
-    width: 130px;
-    height: 40px;
-    border-radius: 30px;
-    box-shadow: 0 0 0 2px rgb(0 0 0 / 10%);
-    background-color: white;
-    background-image: none;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 3px 15px;
+  width: 130px;
+  height: 40px;
+  border-radius: 30px;
+  box-shadow: 0 0 0 2px rgb(0 0 0 / 10%);
+  background-color: white;
+  background-image: none;
 }
 .close-button{
     position: relative;
@@ -48,7 +49,8 @@
 
     background-position: left;
     background-repeat: no-repeat;
-    background-image: url("../../assets/icons/fastForward.svg");
+    /* background-image: url("../../assets/icons/fastForward.svg"); */
+    background-image: url("../../assets/icons/cancel.svg");
 }
 .layer-control-container:focus{
     outline: 0;
