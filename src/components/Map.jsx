@@ -7,6 +7,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import "./styles/Map.css"
 import "./styles/LayersControl.css"
 
+// To see layers info: https://openweathermap.org/api/weathermaps
 var map, toggleLayersIds = [
     {id: "Temperature", layer: "temp_new"},
     {id: "Wind speed", layer: "wind_new"},
@@ -85,17 +86,22 @@ class Map extends React.Component{
     }
 
     addSources = () => {
-        toggleLayersIds.map(layer => {
-            map.addSource(layer.id, {
-                'type': 'raster',
-                'tiles': [
-                    // `${process.env.MapTileAPI.replace("LAYER", layer.layer)}`
-                    `https://api.mapbox.com/v4/${layer.layer}/1/0/0@2x.jpg90?access_token=` + process.env.MapTileAPI
-                ]
-            })
-        })
+      toggleLayersIds.map(layer => {
+        // "Map Zoom" -> map.style.z
 
-        this.addLayers()
+        const xAxis = Math.abs(Math.round(this.props.lon))
+        const yAxis = Math.abs(Math.round(this.props.lat))
+        const LAYER_API = `https://tile.openweathermap.org/map/${layer.layer}/07/${xAxis}/${yAxis}.png?appid=${process.env.WeatherAPIKey}`
+        console.log("layer api", LAYER_API)
+        map.addSource(layer.id, {
+          'type': 'raster',
+          'tiles': [
+            LAYER_API
+          ]
+        })
+      })
+
+      this.addLayers()
     }
 
     addLayers = () => {
