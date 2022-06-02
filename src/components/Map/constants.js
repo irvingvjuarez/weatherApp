@@ -1,5 +1,5 @@
 // To see layers info: https://openweathermap.org/api/weathermaps
-export const layers = [
+export const LAYERS = [
   {id: "Temperature", layer: "temp_new"},
   {id: "Wind speed", layer: "wind_new"},
   {id: "Cloudiness", layer: "clouds_new"},

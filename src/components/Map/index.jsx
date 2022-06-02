@@ -7,8 +7,10 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import "../styles/Map.css"
 import "../styles/LayersControl.css"
 
-import { layers, STYLE_URL, STARTING_ZOOM } from "./constants"
+/**Services */
+import { LAYERS, STYLE_URL, STARTING_ZOOM } from "./constants"
 import { toggleMenu } from "./logic"
+import { setuptOnLayerClicked } from "./services/handleLayers"
 
 let map
 
@@ -34,51 +36,14 @@ class Map extends React.Component{
       let layersBtn = document.querySelector(".layer-control-container")
       layersBtn.addEventListener("click", this.handleLayersBtnClick)
 
-      this.setuptLayersIds()
+      // this.setuptLayersIds()
+      setuptOnLayerClicked(this, map)
       this.addSources()
     })
   }
 
-  setuptLayersIds = () => {
-    let items = [...document.querySelectorAll(".list-item")]
-    items.forEach(item => item.addEventListener("click", this.setLayer))
-  }
-
-  setLayer = (e) => {
-    let layerId = e.target.textContent
-    let layers = [...document.querySelectorAll(".list-item")]
-
-    layers.forEach(layer => {
-      /**Action to add or remove a class from the layer */
-      const action = layerId === layer.textContent ? "add" : "remove"
-      layer.classList[action]("active")
-    })
-
-    /**Determining params for method turningOnLayer */
-    const params = layerId === "None" ? [false] : [true, layerId]
-    this.turningOnLayer(layers, ...params)
-  }
-
-  turningOnLayer = (layers, status, layerId) => {
-    layers.forEach(layer => {
-      /**Determining the action according to the layer id */
-      if(layer.textContent !== "None"){
-
-        /**If 'None' (status) is the layerId  */
-        if(status){
-          const params = (layerId === layer.textContent)
-            ? [layerId, 'visibility', 'visible']
-            : [layer.textContent, 'visibility', 'none']
-          map.setLayoutProperty(...params);
-        }else{
-          map.setLayoutProperty(layer.textContent, 'visibility', 'none')
-        }
-      }
-    })
-  }
-
   addSources = () => {
-    layers.forEach(layer => {
+    LAYERS.forEach(layer => {
       // "Map Zoom" -> map.style.z
 
       const xAxis = Math.abs(Math.round(this.props.lon))
@@ -96,7 +61,7 @@ class Map extends React.Component{
   }
 
   addLayers = () => {
-    layers.forEach(layer => {
+    LAYERS.forEach(layer => {
       map.addLayer({
         'id': layer.id,
         'type': 'raster',
