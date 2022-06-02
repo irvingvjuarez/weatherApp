@@ -112,31 +112,12 @@ class Map extends React.Component{
   }
 
   handleLayersBtnClick = (e) => {
-    let container = this.getRightBtn(e.target)
-    let closeBtn = container.childNodes[0]
-    let layersList = document.querySelector(".layers-list")
+    const container = this.getRightBtn(e.target)
+    const closeBtn = container.childNodes[0]
+    const layersList = document.querySelector(".layers-list")
     const isMenuDisplayed = container.classList.contains("layer-menu")
 
     toggleMenu(isMenuDisplayed, this, container, closeBtn, layersList)
-    // if(container.classList.contains("layer-menu")){
-    //   container.classList.remove("layer-menu")
-    //   closeBtn.classList.add("hide")
-
-    //   container.childNodes[0].removeEventListener("mousemove", this.moveHandler)
-    //   container.removeEventListener("touchmove", this.moveHandler)
-
-    //   layersList.classList.add("hide")
-
-    //   this.coordinates = []
-    // }else{
-    //   container.classList.add("layer-menu")
-    //   closeBtn.classList.remove("hide")
-
-    //   container.childNodes[0].addEventListener("mousedown", this.mouseDown)
-    //   container.addEventListener("touchmove", this.moveHandler)
-
-    //   layersList.classList.remove("hide")
-    // }
   }
 
   mouseDown = (e) => {
