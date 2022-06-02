@@ -19,7 +19,7 @@ class Map extends React.Component{
   }
 
   componentDidMount(){
-    mapboxgl.accessToken = 'pk.eyJ1IjoiaXZqYyIsImEiOiJja3M2Z2ljcTIxNzBpMnByejZsaTFiOWdjIn0.qchk1ClOLnbqLwdLpOzSCg';
+    mapboxgl.accessToken = process.env.MapboxAPIKey;
     map = new mapboxgl.Map({
       container: 'map', // container ID
       style: STYLE_URL, // style URL
@@ -41,14 +41,14 @@ class Map extends React.Component{
 
   setuptLayersIds = () => {
     let items = [...document.querySelectorAll(".list-item")]
-    items.map(item => item.addEventListener("click", this.setLayer))
+    items.forEach(item => item.addEventListener("click", this.setLayer))
   }
 
   setLayer = (e) => {
     let layerId = e.target.textContent
-    let arr = [...document.querySelectorAll(".list-item")]
+    let layers = [...document.querySelectorAll(".list-item")]
 
-    arr.map(layer => {
+    layers.forEach(layer => {
       /**Action to add or remove a class from the layer */
       const action = layerId === layer.textContent ? "add" : "remove"
       layer.classList[action]("active")
@@ -56,18 +56,20 @@ class Map extends React.Component{
 
     /**Determining params for method turningOnLayer */
     const params = layerId === "None" ? [false] : [true, layerId]
-    this.turningOnLayer(arr, ...params)
+    this.turningOnLayer(layers, ...params)
   }
 
-  turningOnLayer = (arr, status, benchmark) => {
-    arr.map(layer => {
-      if(layer.textContent != "None"){
+  turningOnLayer = (layers, status, layerId) => {
+    layers.forEach(layer => {
+      /**Determining the action according to the layer id */
+      if(layer.textContent !== "None"){
+
+        /**If 'None' (status) is the layerId  */
         if(status){
-          if(benchmark === layer.textContent){
-            map.setLayoutProperty(benchmark, 'visibility', 'visible');
-          }else{
-            map.setLayoutProperty(layer.textContent, 'visibility', 'none');
-          }
+          const params = (layerId === layer.textContent)
+            ? [layerId, 'visibility', 'visible']
+            : [layer.textContent, 'visibility', 'none']
+          map.setLayoutProperty(...params);
         }else{
           map.setLayoutProperty(layer.textContent, 'visibility', 'none')
         }
@@ -76,7 +78,7 @@ class Map extends React.Component{
   }
 
   addSources = () => {
-    layers.map(layer => {
+    layers.forEach(layer => {
       // "Map Zoom" -> map.style.z
 
       const xAxis = Math.abs(Math.round(this.props.lon))
@@ -94,7 +96,7 @@ class Map extends React.Component{
   }
 
   addLayers = () => {
-    layers.map(layer => {
+    layers.forEach(layer => {
       map.addLayer({
         'id': layer.id,
         'type': 'raster',
@@ -156,9 +158,7 @@ class Map extends React.Component{
   }
 
   render(){
-    return(
-      <div id="map" className="map-container"></div>
-    )
+    return <div id="map" className="map-container"></div>
   }
 }
 
