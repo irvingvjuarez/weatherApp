@@ -1,11 +1,11 @@
 import React from "react"
 import mapboxgl from 'mapbox-gl';
-import LayersControl from "./LayersControl"
-import LayersList from "./LayersList"
+import LayersControl from "../LayersControl"
+import LayersList from "../LayersList"
 
 import 'mapbox-gl/dist/mapbox-gl.css';
-import "./styles/Map.css"
-import "./styles/LayersControl.css"
+import "../styles/Map.css"
+import "../styles/LayersControl.css"
 
 // To see layers info: https://openweathermap.org/api/weathermaps
 var map, toggleLayersIds = [
