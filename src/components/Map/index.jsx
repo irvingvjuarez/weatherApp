@@ -10,7 +10,7 @@ import "../styles/LayersControl.css"
 /**Services */
 import { LAYERS, STYLE_URL, STARTING_ZOOM } from "./constants"
 import { toggleMenu } from "./logic"
-import { setuptOnLayerClicked } from "./services/handleLayers"
+import { setuptOnLayerClicked, addSources } from "./services/handleLayers"
 
 let map
 
@@ -36,40 +36,8 @@ class Map extends React.Component{
       let layersBtn = document.querySelector(".layer-control-container")
       layersBtn.addEventListener("click", this.handleLayersBtnClick)
 
-      // this.setuptLayersIds()
       setuptOnLayerClicked(this, map)
-      this.addSources()
-    })
-  }
-
-  addSources = () => {
-    LAYERS.forEach(layer => {
-      // "Map Zoom" -> map.style.z
-
-      const xAxis = Math.abs(Math.round(this.props.lon))
-      const yAxis = Math.abs(Math.round(this.props.lat))
-      const LAYER_API = `https://tile.openweathermap.org/map/${layer.layer}/07/${xAxis}/${yAxis}.png?appid=${process.env.WeatherAPIKey}`
-      map.addSource(layer.id, {
-        'type': 'raster',
-        'tiles': [
-          LAYER_API
-        ]
-      })
-    })
-
-    this.addLayers()
-  }
-
-  addLayers = () => {
-    LAYERS.forEach(layer => {
-      map.addLayer({
-        'id': layer.id,
-        'type': 'raster',
-        'source': layer.id,
-        'layout': {
-          'visibility': 'none'
-        }
-      })
+      addSources(this, map)
     })
   }
 

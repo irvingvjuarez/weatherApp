@@ -1,3 +1,5 @@
+import { LAYERS } from "../constants"
+
 /**This method determines when a layer is clicked */
 export const setuptOnLayerClicked = (mapComponent, mapElement) => {
   let layers = [...document.querySelectorAll(".list-item")]
@@ -36,5 +38,37 @@ const activeLayer = (layers, layerId, mapElement) => {
         mapElement.setLayoutProperty(layer.textContent, 'visibility', 'none')
       }
     }
+  })
+}
+
+/**This method adds the  layers as a record to the Map component */
+export const addSources = (mapComponent, mapElement) => {
+  LAYERS.forEach(layer => {
+    // "Map Zoom" -> map.style.z
+
+    const xAxis = Math.abs(Math.round(mapComponent.props.lon))
+    const yAxis = Math.abs(Math.round(mapComponent.props.lat))
+    const LAYER_API = `https://tile.openweathermap.org/map/${layer.layer}/07/${xAxis}/${yAxis}.png?appid=${process.env.WeatherAPIKey}`
+    mapElement.addSource(layer.id, {
+      'type': 'raster',
+      'tiles': [
+        LAYER_API
+      ]
+    })
+  })
+
+  addLayers(LAYERS, mapElement)
+}
+
+const addLayers = (modifiedLayers, mapElement) => {
+  modifiedLayers.forEach(layer => {
+    mapElement.addLayer({
+      'id': layer.id,
+      'type': 'raster',
+      'source': layer.id,
+      'layout': {
+        'visibility': 'none'
+      }
+    })
   })
 }
