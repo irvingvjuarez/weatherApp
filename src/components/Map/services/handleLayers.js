@@ -1,15 +1,15 @@
 import { LAYERS } from "../constants"
 
 /**This method determines when a layer is clicked */
-export const setuptOnLayerClicked = (mapComponent, mapElement) => {
+export const setuptOnLayerClicked = (mapElement) => {
   let layers = [...document.querySelectorAll(".list-item")]
   layers.forEach(item => item.addEventListener(
     "click",
-    (e) => renderLayer(e, mapComponent, layers, mapElement)
+    (e) => renderLayer(e, layers, mapElement)
   ))
 }
 
-const renderLayer = (e, mapComponent, layers, mapElement) => {
+const renderLayer = (e, layers, mapElement) => {
   let layerId = e.target.textContent
 
   layers.forEach(layer => {
@@ -18,8 +18,6 @@ const renderLayer = (e, mapComponent, layers, mapElement) => {
     layer.classList[action]("active")
   })
 
-  /**Determining params for method activeLayer */
-  const params = layerId === "None" ? [false] : [true, layerId]
   activeLayer(layers, layerId, mapElement)
 }
 

@@ -36,7 +36,7 @@ class Map extends React.Component{
       let layersBtn = document.querySelector(".layer-control-container")
       layersBtn.addEventListener("click", (e) => handleLayerClick(e, this))
 
-      setuptOnLayerClicked(this, map)
+      setuptOnLayerClicked(map)
       addSources(this, map)
     })
   }
