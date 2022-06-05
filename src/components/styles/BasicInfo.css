@@ -1,85 +1,86 @@
 .basic-info__sky-data{
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 50px;
-    padding: 9px;
-    border-radius: 0 0 0 15px;
-    background-color: var(--contrastOne);
-    color: white;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100vw;
+  height: 50px;
+  padding: 9px;
+  border-radius: 0 0 0 15px;
+  background-color: var(--contrastOne);
+  color: white;
 }
 .basic-info__sky-data > div{
-    /* padding: 9px; */
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+  /* padding: 9px; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 .sky-data__logo{
-    display: block;
-    width: 32px;
-    height: 32px;
-    margin-right: 9px;
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-right: 9px;
 }
 .sku-data__title{
-    font-family: var(--mainFont);
-    font-weight: 400;
-    font-size: 2rem;
+  font-family: var(--mainFont);
+  font-weight: 400;
+  font-size: 2rem;
 }
 .basic-info__local-time{
-    position: absolute;
-    bottom: 0;
-    transform: translateY(120%);
-    color: black;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(120%);
+  color: black;
 }
 .basic-info__local-time > img {
   width: 25px;
 }
 .basic-info__local-time > *{
-    margin-left: 6px;
+  margin-left: 6px;
 }
 .basic-info__local-time > h3{
-    font-family: var(--secondFont);
-    font-weight: 500;
-    font-size: 1.7rem;
-    margin: 0;
+  font-family: var(--secondFont);
+  font-weight: 500;
+  font-size: 1.7rem;
+  margin: 0;
 }
 .local-time__date{
-    font-family: var(--secondFont);
-    font-weight: 300;
-    font-size: 1.7rem;
+  font-family: var(--secondFont);
+  font-weight: 300;
+  font-size: 1.7rem;
 }
 
 @media screen and (min-width: 750px){
-    .basic-info{
-        width: 100%;
-    }
-    .basic-info__sky-data{
-        height: auto;
-    }
-    .basic-info__sky-data:nth-child(1){
-        margin-bottom: 6px;
-    }
-    .basic-info__local-time{
-        position: static;
-        transform: none;
-        color: white;
-    }
+  .basic-info{
+    width: 100%;
+  }
+  .basic-info__sky-data{
+    height: auto;
+  }
+  .basic-info__sky-data:nth-child(1){
+    margin-bottom: 6px;
+  }
+  .basic-info__local-time{
+    position: static;
+    transform: none;
+    color: white;
+  }
 }
 
 @media screen and (min-width: 1000px){
-    .basic-info__local-time > h3{
-        font-size: 1.9rem;
-    }
-    .local-time__date{
-        font-size: 1.6rem;
-    }
-    .local-time__time{
-        font-size: 1.8rem;
-    }
-    .sku-data__title{
-        font-size: 2.2rem;
-    }
+  .basic-info__local-time > h3{
+    font-size: 1.9rem;
+  }
+  .local-time__date{
+    font-size: 1.6rem;
+  }
+  .local-time__time{
+    font-size: 1.8rem;
+  }
+  .sku-data__title{
+    font-size: 2.2rem;
+  }
 }

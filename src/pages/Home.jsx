@@ -22,12 +22,13 @@ class Home extends React.Component{
   }
 
   renderContent(){
-    const { coord, weather, sys, timezone_offset } = this.props.component.state.data
+    const { state } = this.props.component
+    const { data: { coord, weather, sys, timezone_offset } } = this.props.component.state
 
     if(screen.width >= 750) return(
       <React.Fragment>
         <article className="home-main__info">
-          <Weather state={this.props.component.state} />
+          <Weather state={state} />
         </article>
 
         <article className="home-main__map">
@@ -39,7 +40,8 @@ class Home extends React.Component{
       </React.Fragment>
     )
 
-    return <Map lat={coord.lat} lon={coord.lon}/>
+    return <Weather state={state} />
+    // return <Map lat={coord.lat} lon={coord.lon}/>
   }
 
   render(){
