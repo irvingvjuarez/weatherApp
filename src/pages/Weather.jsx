@@ -10,75 +10,63 @@ import Loader from "../components/Loader"
 import getHourFormat from "../utils/getHourFormat"
 
 import "./styles/Weather.css"
+import { ErrorView } from "../components/ErrorView"
 
 class Weather extends React.Component{
-    constructor(props){
-        super(props)
+
+  render(){
+    const { loading, error, data } = this.props.state
+
+    if(loading) return <Loader />
+    if(error) return <ErrorView />
+
+    const { weather, sys, timezone_offset, main, wind, daily, hourly } = data
+
+    if(hourly.length > 24){
+      for(let i = 0; i < 24; i++){
+        hourly.pop()
+      }
+
+      hourly.forEach(item => {
+        let time = getHourFormat(item.dt)
+        item.dt = String(time)
+        item.pop *= 100
+      })
     }
 
-    render(){
-        const { loading, error } = this.props.state
-        
+    return(
+      <section className="weather-main">
+        <BasicInfo status={weather[0].main} country={sys.country} time={timezone_offset} />
+        <TempOverview temp={main}/>
 
-        if(loading){
-            return(
-                <Loader />
-            )
-        }else if(error){
-            return(
-                <div className="error-msg">
-                    <h3>Error: City not found</h3>
-                </div>
-            )
-        }else{
+        <Section title="Temperature over next 24hrs">
+          <Carousel data={hourly} unit="°" name="temp"/>
+        </Section>
 
-            const { weather, sys, timezone_offset, main, wind, daily, hourly } = this.props.state.data
-            if(hourly.length > 24){
-                for(let i = 0; i < 24; i++){
-                    hourly.pop()
-                }
+        <Section title="Details">
+          <section className="details-container">
+            <DetailCard title="Humidity" value={main.humidity} units="%" img="../assets/icons/humidity.png"/>
+            <DetailCard title="Pressure" value={main.pressure} units="hPa" img="../assets/icons/gauge.png"/>
+            <DetailCard title="Wind speed" value={wind.speed} units="m/s" img="../assets/icons/wind.png"/>
+          </section>
+        </Section>
 
-                hourly.map(item => {
-                    let time = getHourFormat(item.dt)
-                    item.dt = String(time)
-                    item.pop *= 100
-                })
-            }
+        <Section title="Rain probability over next 24hrs">
+          <Carousel data={hourly} unit="%" name="pop"/>
+        </Section>
 
-            return(
-                <section className="weather-main">
-                    <BasicInfo status={weather[0].main} country={sys.country} time={timezone_offset} />
-                    <TempOverview temp={main}/>
-    
-                    <Section title="Temperature over next 24hrs">
-                        <Carousel data={hourly} unit="°" name="temp"/>
-                    </Section>
-    
-                    <Section title="Details">
-                        <section className="details-container">
-                            <DetailCard title="Humidity" value={main.humidity} units="%" img="../assets/icons/humidity.png"/>
-                            <DetailCard title="Pressure" value={main.pressure} units="hPa" img="../assets/icons/gauge.png"/>
-                            <DetailCard title="Wind speed" value={wind.speed} units="m/s" img="../assets/icons/wind.png"/>
-                        </section>
-                    </Section>
-    
-                    <Section title="Rain probability over next 24hrs">
-                        <Carousel data={hourly} unit="%" name="pop"/>
-                    </Section>
-    
-                    <Section title="Next 7 days">
-                        <section className="dayly-forecast-container">
-                            {daily.map(day => {
-                                if(day != daily[0]){
-                                    return (<DayForecast key={day.dt} forecast={day}/>)
-                                }
-                            })}
-                        </section>
-                    </Section>
-                </section>
-            )
-        }
-    }
+        <Section title="Next 7 days">
+          <section className="dayly-forecast-container">
+            {daily.map(day => {
+              if(day != daily[0]){
+                return (<DayForecast key={day.dt} forecast={day}/>)
+              }
+            })}
+          </section>
+        </Section>
+      </section>
+    )
+  }
 }
 
 export default Weather
