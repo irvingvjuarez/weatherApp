@@ -6,7 +6,7 @@ import Layout from "../components/Layout"
 import Home from "../pages/Home"
 import About from "../pages/About"
 import Contact from "../pages/Contact"
-import Weather from "../pages/Weather"
+import Map from "../components/Map"
 import NotFound from "../pages/NotFound"
 
 class App extends React.Component{
@@ -17,7 +17,7 @@ class App extends React.Component{
   }
 
   render(){
-    const { name } = this.state.data
+    const { name, coord } = this.state.data
 
     return(
       <BrowserRouter>
@@ -26,7 +26,7 @@ class App extends React.Component{
             <Route exact path="/" render={() => <Home component={this} />}/>
             <Route path="/contact" component={Contact} />
             <Route path="/about" component={About} />
-            <Route exact path="/weather-info" render={() => <Weather state={this.state} />} />
+            <Route exact path="/map" render={() => <Map lat={coord.lat} lon={coord.lon}/>} />
             <Route component={NotFound} />
           </Switch>
         </Layout>

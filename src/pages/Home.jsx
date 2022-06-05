@@ -41,7 +41,6 @@ class Home extends React.Component{
     )
 
     return <Weather state={state} />
-    // return <Map lat={coord.lat} lon={coord.lon}/>
   }
 
   render(){
