@@ -3,6 +3,7 @@
   flex-direction: column;
   min-height: calc(100% - 45px);
   padding-bottom: 30px;
+  overflow-x: hidden;
 }
 .details-container{
   display: grid;
