@@ -26,7 +26,7 @@ export const newRequestData = async (API, component) => {
       })
     })
     .catch(error => {
-      component({
+      component.setState({
         loading: false,
         error: true
       })
