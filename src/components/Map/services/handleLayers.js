@@ -3,7 +3,7 @@ import { LAYERS } from "../constants"
 /**This method determines when a layer is clicked */
 export const setuptOnLayerClicked = (mapElement) => {
   let layers = [...document.querySelectorAll(".list-item")]
-  layers.forEach(item => item.addEventListener(
+  layers.forEach(layer => layer.addEventListener(
     "click",
     (e) => renderLayer(e, layers, mapElement)
   ))

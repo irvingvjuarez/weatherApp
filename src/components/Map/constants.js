@@ -8,4 +8,4 @@ export const LAYERS = [
 ]
 
 export const STYLE_URL = 'mapbox://styles/mapbox/dark-v10'
-export const STARTING_ZOOM = 7
+export const STARTING_ZOOM = 12
