@@ -1,4 +1,3 @@
-import { API_BY_COORD, WEATHER_ONE_CALL_API } from "../globals";
 import { getApiRequest } from "./getApiRequest";
 import { newRequestData } from "./newRequestData"
 
