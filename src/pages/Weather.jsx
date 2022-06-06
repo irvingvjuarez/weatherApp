@@ -16,7 +16,7 @@ import Banner from "../components/Banner"
 class Weather extends React.Component{
 
   render(){
-    const { loading, error, data } = this.props.state
+    const { loading, error, data } = this.props.component.state
 
     if(loading) return <HomeSkeleton />
     if(error) return <ErrorView />
@@ -35,7 +35,7 @@ class Weather extends React.Component{
 
     return(
       <section className="weather-main">
-        <Banner />
+        <Banner component={this.props.component} />
         <BasicInfo status={weather[0].main} country={sys.country} time={timezone_offset} />
         <TempOverview temp={main}/>
 

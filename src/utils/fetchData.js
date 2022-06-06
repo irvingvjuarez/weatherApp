@@ -2,7 +2,7 @@ import { API_BY_COORD, WEATHER_ONE_CALL_API } from "../globals";
 import { getApiRequest } from "./getApiRequest";
 import { newRequestData } from "./newRequestData"
 
-const fetchData = async (component, name) => {
+const fetchData = async (component, name = "Mexico City") => {
   component.setState({
     loading: true,
     error: null,
