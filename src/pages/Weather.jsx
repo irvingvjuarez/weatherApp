@@ -11,6 +11,7 @@ import getHourFormat from "../utils/getHourFormat"
 import "./styles/Weather.css"
 import { ErrorView } from "../components/ErrorView"
 import { HomeSkeleton } from "../skeletons/HomeSkeleton"
+import Banner from "../components/Banner"
 
 class Weather extends React.Component{
 
@@ -34,6 +35,7 @@ class Weather extends React.Component{
 
     return(
       <section className="weather-main">
+        <Banner />
         <BasicInfo status={weather[0].main} country={sys.country} time={timezone_offset} />
         <TempOverview temp={main}/>
 
