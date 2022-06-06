@@ -47,7 +47,6 @@ class Home extends React.Component{
     const { loading, error } = this.props.component.state
 
     if(loading) return <HomeSkeleton />
-
     if(error) return <ErrorView component={this.props.component} />
 
     return(

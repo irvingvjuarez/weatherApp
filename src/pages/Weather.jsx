@@ -5,27 +5,25 @@ import Carousel from "../components/Carousel"
 import Section from "../components/Section"
 import DetailCard from "../components/DetailCard"
 import DayForecast from "../components/DayForecast"
-import Loader from "../components/Loader"
 
 import getHourFormat from "../utils/getHourFormat"
 
 import "./styles/Weather.css"
 import { ErrorView } from "../components/ErrorView"
+import { HomeSkeleton } from "../skeletons/HomeSkeleton"
 
 class Weather extends React.Component{
 
   render(){
     const { loading, error, data } = this.props.state
 
-    if(loading) return <Loader />
+    if(loading) return <HomeSkeleton />
     if(error) return <ErrorView />
 
     const { weather, sys, timezone_offset, main, wind, daily, hourly } = data
 
     if(hourly.length > 24){
-      for(let i = 0; i < 24; i++){
-        hourly.pop()
-      }
+      hourly.splice(23)
 
       hourly.forEach(item => {
         let time = getHourFormat(item.dt)
