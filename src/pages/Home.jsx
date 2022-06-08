@@ -16,12 +16,17 @@ class Home extends React.Component{
   }
 
   componentDidMount(){
-    /**Fetching the current location data or a random city */
-    const size = RANDOM_CITIES.length
-    const currentLocation = localStorage.getItem("currentLocation") ?
-      JSON.parse(localStorage.getItem("currentLocation")).name : null
-    const choosenCity = currentLocation || RANDOM_CITIES[Math.floor(Math.random() * size)].name
-    fetchData(this.props.component, choosenCity)
+    const { component } = this.props
+    const { state: { data: { coord } } } = component
+
+    if(!coord.lat && !coord.lon){
+      /**Fetching the current location data or a random city */
+      const size = RANDOM_CITIES.length
+      const currentLocation = localStorage.getItem("currentLocation") ?
+        JSON.parse(localStorage.getItem("currentLocation")).name : null
+      const choosenCity = currentLocation || RANDOM_CITIES[Math.floor(Math.random() * size)].name
+      fetchData(component, choosenCity)
+    }
   }
 
   renderContent(){
