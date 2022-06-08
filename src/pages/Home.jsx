@@ -16,18 +16,27 @@ class Home extends React.Component{
   }
 
   componentDidMount(){
-    const size = RANDOM_CITIES.length
-    const choosenCity = RANDOM_CITIES[Math.floor(Math.random() * size)].name
-    fetchData(this.props.component, choosenCity)
+    const { component } = this.props
+    const { state: { data: { coord } } } = component
+
+    if(!coord.lat && !coord.lon){
+      /**Fetching the current location data or a random city */
+      const size = RANDOM_CITIES.length
+      const currentLocation = localStorage.getItem("currentLocation") ?
+        JSON.parse(localStorage.getItem("currentLocation")).name : null
+      const choosenCity = currentLocation || RANDOM_CITIES[Math.floor(Math.random() * size)].name
+      fetchData(component, choosenCity)
+    }
   }
 
   renderContent(){
-    const { coord, weather, sys, timezone_offset } = this.props.component.state.data
+    const { component } = this.props
+    const { data: { coord, weather, sys, timezone_offset } } = component.state
 
     if(screen.width >= 750) return(
       <React.Fragment>
         <article className="home-main__info">
-          <Weather state={this.props.component.state} />
+          <Weather component={component} />
         </article>
 
         <article className="home-main__map">
@@ -39,14 +48,13 @@ class Home extends React.Component{
       </React.Fragment>
     )
 
-    return <Map lat={coord.lat} lon={coord.lon}/>
+    return <Weather component={component} />
   }
 
   render(){
     const { loading, error } = this.props.component.state
 
     if(loading) return <HomeSkeleton />
-
     if(error) return <ErrorView component={this.props.component} />
 
     return(

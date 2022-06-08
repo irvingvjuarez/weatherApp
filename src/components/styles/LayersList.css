@@ -1,41 +1,44 @@
 .layers-list{
-    position: fixed;
-    right: 5px;
-    bottom: 58px;
-    width: 130px;
-    padding: 12px 12px 30px 12px;
-    background-color: rgba(255,255,255,0.9);
-    float: right;
-    margin-right: 10px;
-    transform: translateY(17px);
-    pointer-events: auto;
-    overflow: hidden;
+  position: fixed;
+  right: 5px;
+  bottom: 58px;
+  width: 130px;
+  padding: 12px 12px 30px 12px;
+  background-color: rgba(255,255,255,0.9);
+  float: right;
+  margin-right: 10px;
+  transform: translateY(17px);
+  pointer-events: auto;
+  overflow: hidden;
 }
 .list-item{
-    padding: 5px 0;
-    font-family: var(--mainFont);
-    font-weight: 500;
-    font-size: 1.5rem;
-    cursor: pointer;
+  padding: 5px 0;
+  font-family: var(--mainFont);
+  font-weight: 500;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 .list-item:hover{
-    color: var(--contrastOne);
+  color: var(--contrastOne);
 }
 
 @media screen and (min-width: 750px){
-    .layers-list{
-        width: 160px;
-        height: 220px;
-    }
-    .list-item{
-        font-size: 1.7rem;
-        line-height: 3.2rem;
-    }
+  .layers-list{
+    width: 160px;
+    min-height: 220px;
+  }
+  .list-item{
+    font-size: 1.7rem;
+    line-height: 3.2rem;
+  }
 }
 
 .hide{
-    width: 0px;
-    height: 0px;
-    background: transparent;
-    overflow: hidden;
+  width: 0px;
+  height: 0px;
+  background: transparent;
+  overflow: hidden;
+}
+.hide > h3 {
+  display: none;
 }

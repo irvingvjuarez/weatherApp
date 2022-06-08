@@ -1,40 +1,40 @@
 .weather-main{
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100% - 45px);
-    padding-bottom: 30px;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100% - 45px);
+  padding-bottom: 30px;
+  overflow-x: hidden;
 }
 .details-container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 9px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
 }
 .dayly-forecast-container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media screen and (min-width: 750px){
-    .weather-main{
-        overflow: scroll;
-    }
-    ::-webkit-scrollbar{
-        width: 8px;
-        height: 8px;
-    }
-    ::-webkit-scrollbar-track{
-        background: rgba(0,0,0,0.1);
-    }
-    ::-webkit-scrollbar-thumb{
-        background: rgba(0,0,0,0.4);
-        border-radius: 15px;
-    }
+  .weather-main{
+    overflow: scroll;
+  }
+  ::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track{
+    background: rgba(0,0,0,0.1);
+  }
+  ::-webkit-scrollbar-thumb{
+    background: rgba(0,0,0,0.4);
+    border-radius: 15px;
+  }
 }
 
 @media screen and (min-width: 1000px){
-    .weather-main{
-        padding: 0 9px;
-    }
+  .weather-main{
+    padding: 0 9px;
+  }
 }

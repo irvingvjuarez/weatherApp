@@ -5,23 +5,15 @@ import InputField from "./InputField"
 import "./styles/Header.css"
 
 class Header extends React.Component{
-  constructor(props){
-    super(props)
-  }
-
-  renderTitle(){
-    return (
-      <h3 className="header__cityName">
-        {this.props.component.state.error ? "City not found" : `${ this.props.location }`}
-      </h3>
-    )
-  }
-
   render(){
+    const { location, component: { state } } = this.props
+
     return(
       <header>
         <Navbar />
-        {this.renderTitle()}
+        <h3 className="header__cityName">
+          {state.error ? "City not found" : `${ location }`}
+        </h3>
         <InputField component={this.props.component} />
       </header>
     )

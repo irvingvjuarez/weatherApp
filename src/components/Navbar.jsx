@@ -43,8 +43,8 @@ class Sidebar extends React.Component{
             action={ this.toggleSidebar }
           />
         </div>
-        <li><Link to="/">Map</Link></li>
-        <li><Link to="/weather-info">Weather data</Link></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/map">Interactive Map</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contact">Contact</Link></li>
       </ul>

@@ -1,0 +1,44 @@
+.banner {
+  padding: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--borderColor);
+}
+.banner__button{
+  padding: 6px;
+  min-width: fit-content;
+  font-size: 1.2rem;
+  font-weight: 100;
+  height: 25px;
+  margin-left: 3px;
+  letter-spacing: 0.5px;
+
+  background-color: var(--contrastOne);
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.banner__title{
+  font-family: var(--secondFont);
+  font-weight: 400;
+}
+.banner__done{
+  display: block;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 1.6rem;
+  font-family: var(--secondFont);
+}
+.banner__done > button {
+  background: none;
+  border: none;
+  display: flex;
+}
+.banner__done img{
+  width: 17px;
+}
