@@ -35,9 +35,9 @@ class Weather extends React.Component{
 
     return(
       <section className="weather-main">
-        {!localStorage.getItem("currentLocation") && (
-          <Banner component={this.props.component} />
-        )}
+        <Banner component={this.props.component} />
+        {/* {!localStorage.getItem("currentLocation") && (
+        )} */}
         <BasicInfo status={weather[0].main} country={sys.country} time={timezone_offset} />
         <TempOverview temp={main}/>
 

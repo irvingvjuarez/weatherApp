@@ -3,15 +3,13 @@ import { getCurrentLocation } from "./services/getCurrentLocation"
 export const initialState = (component) => ({
   message: "Get the weather of my current location",
   buttonTitle: "GET NOW",
-  doneTitle: "",
   buttonAction: () => {
     /**Method to ask for the geolocation and get current location weather info */
     getCurrentLocation(component)
   }
 })
 
-export const secondaryState = (bannerState, component, setBannerState) => ({
-  ...bannerState,
+export const secondaryState = (component, setBannerState) => ({
   message: "Set this location as the default one",
   buttonTitle: "SET NOW",
   buttonAction: () => {
@@ -25,7 +23,7 @@ export const secondaryState = (bannerState, component, setBannerState) => ({
 
     localStorage.setItem("currentLocation", JSON.stringify(currentLocation))
     setBannerState({
-      ...bannerState,
+      message: "",
       doneTitle: "Done!"
     })
   }
