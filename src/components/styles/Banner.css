@@ -18,6 +18,7 @@
   border: none;
   color: white;
   border-radius: 6px;
+  cursor: pointer;
 }
 .banner__title{
   font-family: var(--secondFont);
