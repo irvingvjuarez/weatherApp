@@ -24,3 +24,21 @@
   font-family: var(--secondFont);
   font-weight: 400;
 }
+.banner__done{
+  display: block;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 1.6rem;
+  font-family: var(--secondFont);
+}
+.banner__done > button {
+  background: none;
+  border: none;
+  display: flex;
+}
+.banner__done img{
+  width: 17px;
+}

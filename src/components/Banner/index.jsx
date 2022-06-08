@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { getCurrentLocation } from "./services/getCurrentLocation"
-import "../styles/Banner.css"
 import { RANDOM_CITIES } from "../../globals"
+
+// css
+import "../styles/Banner.css"
+
+// assets
+import CloseBtn from "../../assets/icons/cancel.svg"
 
 const Banner = ({ component }) => {
   const [bannerState, setBannerState] = useState({
@@ -12,6 +17,11 @@ const Banner = ({ component }) => {
       getCurrentLocation(component)
     },
     doneTitle: ""
+  })
+
+  const handleCloseBanner = () => setBannerState({
+    ...bannerState,
+    message: ""
   })
 
   useEffect(() => {
@@ -43,22 +53,30 @@ const Banner = ({ component }) => {
 
   }, [])
 
-  return(
-    <div className="banner">
-      {bannerState.doneTitle ? (
-        <span className="banner__done">
-          {bannerState.doneTitle}
-        </span>
-      ) : (
-        <>
-          <h2 className="banner__title">{bannerState.message}</h2>
-          <button className="banner__button" onClick={bannerState.buttonAction}>
-            {bannerState.buttonTitle}
-          </button>
-        </>
-      )}
-    </div>
-  )
+  if(bannerState.message) {
+    return(
+      <div className="banner">
+        {bannerState.doneTitle ? (
+          <span className="banner__done">
+            {bannerState.doneTitle}
+
+            <button onClick={handleCloseBanner}>
+              <img src={CloseBtn} alt="" />
+            </button>
+          </span>
+        ) : (
+          <>
+            <h2 className="banner__title">{bannerState.message}</h2>
+            <button className="banner__button" onClick={bannerState.buttonAction}>
+              {bannerState.buttonTitle}
+            </button>
+          </>
+        )}
+      </div>
+    )
+  }else{
+    return null
+  }
 }
 
 export default Banner
