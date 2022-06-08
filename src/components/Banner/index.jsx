@@ -6,13 +6,12 @@ import { RANDOM_CITIES } from "../../globals"
 const Banner = ({ component }) => {
   const [bannerState, setBannerState] = useState({
     message: "Get the weather of my current location",
-    buttonTitle: "GET NOW"
+    buttonTitle: "GET NOW",
+    buttonAction: () => {
+      /**Method to ask for the geolocation and get current location weather info */
+      getCurrentLocation(component)
+    }
   })
-
-  const handleGetCurrentLocation = () => {
-    /**Method to ask for the geolocation and get current location weather info */
-    getCurrentLocation(component)
-  }
 
   useEffect(() => {
     const cityName = document.querySelector(".header__cityName").textContent
@@ -21,7 +20,18 @@ const Banner = ({ component }) => {
     if(isCityNameInRandomCities === undefined){
       setBannerState({
         message: "Set this location as the default one",
-        buttonTitle: "SET NOW"
+        buttonTitle: "SET NOW",
+        buttonAction: () => {
+          /**Here the local storage for the current location is settled */
+          const { data: { name, coord } } = component.state
+          const currentLocation = {
+            name,
+            lon: coord.lon,
+            lat: coord.lat
+          }
+
+          localStorage.setItem("currentLocation", JSON.stringify(currentLocation))
+        }
       })
     }
 
@@ -30,7 +40,7 @@ const Banner = ({ component }) => {
   return(
     <div className="banner">
       <h2 className="banner__title">{bannerState.message}</h2>
-      <button className="banner__button" onClick={handleGetCurrentLocation}>
+      <button className="banner__button" onClick={bannerState.buttonAction}>
         {bannerState.buttonTitle}
       </button>
     </div>
