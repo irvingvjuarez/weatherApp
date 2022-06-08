@@ -42,8 +42,8 @@ const Banner = ({ component }) => {
   }, [])
 
   return(
-    <div className="banner">
-      {bannerState.message ? (
+    <div className={bannerState.message ? `banner` : "f"}>
+      {bannerState.message && (
         <>
           {bannerState.doneTitle ? (
             <span className="banner__done">
@@ -62,8 +62,6 @@ const Banner = ({ component }) => {
             </>
           )}
         </>
-      ) : (
-        <></>
       )}
     </div>
   )
