@@ -10,7 +10,8 @@ const Banner = ({ component }) => {
     buttonAction: () => {
       /**Method to ask for the geolocation and get current location weather info */
       getCurrentLocation(component)
-    }
+    },
+    doneTitle: ""
   })
 
   useEffect(() => {
@@ -19,6 +20,7 @@ const Banner = ({ component }) => {
     const isCityNameInRandomCities = RANDOM_CITIES.find(city => city.name === cityName.trim())
     if(isCityNameInRandomCities === undefined){
       setBannerState({
+        ...bannerState,
         message: "Set this location as the default one",
         buttonTitle: "SET NOW",
         buttonAction: () => {
@@ -31,6 +33,10 @@ const Banner = ({ component }) => {
           }
 
           localStorage.setItem("currentLocation", JSON.stringify(currentLocation))
+          setBannerState({
+            ...bannerState,
+            doneTitle: "Done!"
+          })
         }
       })
     }
@@ -39,10 +45,18 @@ const Banner = ({ component }) => {
 
   return(
     <div className="banner">
-      <h2 className="banner__title">{bannerState.message}</h2>
-      <button className="banner__button" onClick={bannerState.buttonAction}>
-        {bannerState.buttonTitle}
-      </button>
+      {bannerState.doneTitle ? (
+        <span className="banner__done">
+          {bannerState.doneTitle}
+        </span>
+      ) : (
+        <>
+          <h2 className="banner__title">{bannerState.message}</h2>
+          <button className="banner__button" onClick={bannerState.buttonAction}>
+            {bannerState.buttonTitle}
+          </button>
+        </>
+      )}
     </div>
   )
 }
