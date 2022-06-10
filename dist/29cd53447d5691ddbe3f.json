@@ -3,17 +3,17 @@
   "name": "Weather App",
   "icons": [
     {
-      "src": "/public/weather192.png",
+      "src": "weather192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/public/weather512.png",
+      "src": "weather512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/public/weather512.png",
+      "src": "weather512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

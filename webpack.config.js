@@ -43,6 +43,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: './src/assets', to: './assets' },
+        { from: './public/*.png', to: './' },
+        { from: './public/manifest.json', to: './' },
       ],
     }),
     new Dotenv({
