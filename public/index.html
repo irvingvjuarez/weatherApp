@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <!-- SEO -->
-    <meta name="description" content="See temperature and rain probability over next 24 hours as well as weather conditions for the next 7 days in whatever place you want all around the globe. Oversee weather conditions and act in consequence. The weather will no be a problem anymore">
-    <meta name="og:title" content="The Weather App">
-    <meta name="og:description" content="See temperature and rain probability over next 24 hours as well as weather conditions for the next 7 days in whatever place you want all around the globe. Oversee weather conditions and act in consequence. The weather will no be a problem anymore">
-    <meta name="og:image" content="https://icon-library.com/images/weather-icon-gif/weather-icon-gif-15.jpg">
-    <meta property="og:url" content="https://github.com/IrvingJuarez/weatherApp">
-    <meta name="twitter:card" content="summary_large_image">
+  <!-- SEO -->
+  <meta name="description" content="See temperature and rain probability over next 24 hours as well as weather conditions for the next 7 days in whatever place you want all around the globe. Oversee weather conditions and act in consequence. The weather will no be a problem anymore">
+  <meta name="og:title" content="The Weather App">
+  <meta name="og:description" content="See temperature and rain probability over next 24 hours as well as weather conditions for the next 7 days in whatever place you want all around the globe. Oversee weather conditions and act in consequence. The weather will no be a problem anymore">
+  <meta name="og:image" content="https://icon-library.com/images/weather-icon-gif/weather-icon-gif-15.jpg">
+  <meta property="og:url" content="https://github.com/IrvingJuarez/weatherApp">
+  <meta name="twitter:card" content="summary_large_image">
 
-    <!-- PWA -->
-    <link rel="manifest" href="./manifest.json">
-    <meta name="theme-color" content="#133E59">
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#133E59">
 
-    <link rel="apple-touch-icon" href="./weather192.png" />
-    <meta name="apple-mobile-web-app-title" content="Weather App" />
-    <meta name="apple-mobile-web-app-capable" content="no" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="#133E59" />
+  <link rel="apple-touch-icon" href="./weather192.png" />
+  <meta name="apple-mobile-web-app-title" content="Weather App" />
+  <meta name="apple-mobile-web-app-capable" content="no" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="#133E59" />
 </head>
 <body>
-    <div id="root"></div>
+  <div id="root"></div>
+
+  <script>
+
+    /**sw registration for PWA */
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.register("./sw.js")
+       .catch(error => console.log(error.message))
+    }
+
+  </script>
 </body>
 </html>
