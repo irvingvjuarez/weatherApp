@@ -1,1 +1,1 @@
-const precache=async()=>{(await caches.open("v1")).addAll(["./index.html","./main.js","./favicon.png"])};self.addEventListener("install",(a=>{a.waitUntil(precache())}));
+const doCache=!1,CACHE_NAME="pwa-cache";self.addEventListener("activate",(e=>{const t=[CACHE_NAME];e.waitUntil(caches.keys().then((e=>Promise.all(e.map((e=>{if(!t.includes(e))return console.log(`Deleting cache: ${e}`),caches.delete(e)}))))))})),self.addEventListener("install",(function(e){})),self.addEventListener("fetch",(function(e){}));
