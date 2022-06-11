@@ -32,36 +32,41 @@ class Sidebar extends React.Component{
     })
   }
 
-  returnList(nameClass){
-    return(
-      <ul className={`nav__ul-mobile ${nameClass}`}>
-        <div className="navbar-header">
-          <HeaderButton
-            specificClassName="header__closeButton"
-            description="Close button"
-            imgUrl={closedIcon}
-            action={ this.toggleSidebar }
-          />
-        </div>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/map">Interactive Map</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-      </ul>
-    )
-  }
-
   renderUl = () => {
     const { sidebar } = this.state
-    if(sidebar) return this.returnList("open")
-    if(sidebar === false) return this.returnList("close")
+    const nameClass = sidebar ? "open" : "close";
 
     return(
-      <ul className="nav__ul-desktop">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-      </ul>
+      <>
+        <ul className={`nav__ul-mobile ${nameClass}`}>
+          <div className="navbar-header">
+            <HeaderButton
+              specificClassName="header__closeButton"
+              description="Close button"
+              imgUrl={closedIcon}
+              action={ this.toggleSidebar }
+            />
+          </div>
+          <li onClick={this.toggleSidebar}>
+            <Link to="/">Home</Link>
+          </li>
+          <li onClick={this.toggleSidebar}>
+            <Link to="/map">Interactive Map</Link>
+          </li>
+          <li onClick={this.toggleSidebar}>
+            <Link to="/about">About</Link>
+          </li>
+          <li onClick={this.toggleSidebar}>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
+
+        <ul className="nav__ul-desktop">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        </ul>
+      </>
     )
   }
 
