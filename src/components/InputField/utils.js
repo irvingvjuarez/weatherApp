@@ -25,13 +25,13 @@ export const enterListener = (e, component) => {
   }
 }
 
-export const fetchCities = (input) => {
+export const fetchCities = (input, setSearchOptions) => {
   const { value } = input.target
   const where = getWhere(value)
   const api = CITIES_API.replace("{where}", where)
 
   fetch(api, citiesRequestConfig)
     .then(res => res.json())
-    .then(data => console.log("Cites API data:", data))
+    .then(data => setSearchOptions(data.results))
     .catch(err => console.log("There has been an error: ", err.message))
 }

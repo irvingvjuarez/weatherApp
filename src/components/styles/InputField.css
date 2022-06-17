@@ -8,14 +8,33 @@
     width: auto;
 }
 .large{
-    height: 60%;
-    width: 87%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 0 9px;
-    border-radius: 15px;
-    background-color: #32688B;
+  position: relative;
+  height: 60%;
+  width: 87%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 9px;
+  border-radius: 15px;
+  background-color: #32688B;
+}
+.header__option-list{
+  position: absolute;
+  width: 100%;
+  top: 110%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: black;
+  list-style: none;
+  box-shadow: var(--mainShadow);
+  border-radius: 9px;
+  font-size: 1.3rem;
+}
+.header__option-list li{
+  padding: 6px 12px;
+  font-family: var(--mainFont);
 }
 .header__inputButton{
     width: 15px;
