@@ -1,32 +1,29 @@
+<img src="https://raw.githubusercontent.com/irvingvjuarez/weatherApp/development/src/assets/icons/favicon.png" width="160" />
+
 # weatherApp
 Web app to know the weather in real time 🌧 all around the world 🌏
 
-# Quick start
+# Get Started
 
-In order to manipulate this project, you need to make a fork to your repository, clone it on your local environment and run the next scripts
+1. Fork the repo
+2. Clone it in your local machine
+3. Install the necessary dependencies
+4. Get the needed API keys.
 
-```
-// First of all, install all the dependencies used for the project
-npm install
+The project uses several APIs to fetch different kind of data. You will need these:
+- **WeatherAPIKey** (to fetch weather info). Get your Weather API Key here: https://openweathermap.org/api
+- **MapboxAPIKey** (to use interactive map). Get the MapboxAPIKey from this URL https://www.mapbox.com/
+- **CitiesApiApplicationID** & **CitiesApiKey** (to fetch name of cities). You can get them here: https://www.back4app.com/database/back4app/list-of-all-continents-countries-cities/get-started
 
-// Afterwards, start coding
-npm run start
-```
+You need to use these keys as env variables and store them in a `.env` file. There is a `.env.example` file for more info. <br>
+Add these env variables in your deploy provider (netlify, vercel, etc) <br>
 
-# Check it out
+5. `npm run start` to run in a dev environment. <br>
+You count with the following commands
+- npm run start: Run the app in a dev environment
+- npm run build: Create the bundle for production
+- npm run preview: Let you preview the app as it would look like in production but in local. This is to try PWA features
+
+# Watch it alive 🌏🌧️
 
 [The Weather App](https://irvingjuarezweatherapp.netlify.app/)
-
-# Quick look
-
-### Mobile
-![mobile 1 image](./readme/images/mobile1.png)
-![mobile 2 image](./readme/images/mobile2.png)
-![mobile 3 image](./readme/images/mobile3.png)
-
-### Tablet
-![tablet image](./readme/images/tablet.png)
-
-### Desktop
-![desktop image](./readme/images/desktop.png)
-
