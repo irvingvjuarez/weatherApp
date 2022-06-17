@@ -11,23 +11,18 @@ import fetchData from "../../utils/fetchData"
 const InputField = ({ component }) => {
   const [search, setSearch] = useState(null)
   const [searchOptions, setSearchOptions] = useState([])
+  const inputRef = useRef(null)
   const handleSearch = () => {
     setSearch(true)
-
-    let input = document.querySelector(".header__input")
-    input.addEventListener("keyup", (e) => enterListener(e, component))
-
-    /**Set focus to the input box */
-    input.focus()
-    input.addEventListener("blur", () => {
-      setTimeout(() => {
-        setSearch(false)
-        setSearchOptions([])
-      }, 200)
-    })
+    inputRef.current.focus()
   }
   const handleChange = (e) => fetchCities(e, setSearchOptions)
   const handleFetch = (e) => fetchData(component, e.target.textContent)
+  const handleBlur = (e) => setTimeout(() => {
+    e.target.value = ""
+    setSearch(false)
+    setSearchOptions([])
+  }, 200)
 
   return(
     <div className={`header__input-field ${search && "large"}`}>
@@ -38,10 +33,13 @@ const InputField = ({ component }) => {
         action={ handleSearch }
       />
       <input
+        ref={inputRef}
         type="text"
         className={`header__input ${search ? "input-display" : "input-hidden"}`}
         placeholder={search ? "Search a city" : ""}
         onChange={handleChange}
+        onKeyUp={(e) => enterListener(e, component)}
+        onBlur={handleBlur}
       />
       {(searchOptions.length && search) > 0 && (
         <ul className="header__option-list">
