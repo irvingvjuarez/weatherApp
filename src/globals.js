@@ -3,6 +3,7 @@ const apiKey = process.env.WeatherAPIKey
 export const API_BY_CITY_NAME = "https://api.openweathermap.org/data/2.5/weather?q=NAME&units=metric&appid=" + apiKey
 export const API_BY_COORD = "https://api.openweathermap.org/data/2.5/weather?lat=LAT&lon=LON&units=metric&appid=" + apiKey
 export const WEATHER_ONE_CALL_API = "https://api.openweathermap.org/data/2.5/onecall?lat=LAT&lon=LON&units=metric&appid=" + apiKey
+export const CITIES_API = "https://parseapi.back4app.com/classes/Continentscountriescities_City?limit=10&where={where}&keys=name,cityId"
 
 import mx from "./assets/images/mx.jpg"
 import bogota from "./assets/images/bogota.jpg"

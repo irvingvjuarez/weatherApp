@@ -1,5 +1,14 @@
 import fetchData from "../../utils/fetchData"
 
+export const getWhere = (request) => {
+  return encodeURIComponent(JSON.stringify({
+    "name": {
+      "$regex": request,
+      "$options": "i"
+    }
+  }));
+}
+
 export const enterListener = (e, component) => {
   if(e.keyCode === 13){
     e.target.blur()
