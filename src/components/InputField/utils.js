@@ -1,6 +1,14 @@
+import { CITIES_API } from "../../globals";
 import fetchData from "../../utils/fetchData"
 
-export const getWhere = (request) => {
+const citiesRequestConfig = {
+  headers: {
+    'X-Parse-Application-Id': process.env.CitiesApiApplicationID,
+    'X-Parse-REST-API-Key': process.env.CitiesApiKey
+  }
+}
+
+const getWhere = (request) => {
   return encodeURIComponent(JSON.stringify({
     "name": {
       "$regex": request,
@@ -11,18 +19,19 @@ export const getWhere = (request) => {
 
 export const enterListener = (e, component) => {
   if(e.keyCode === 13){
+    e.target.value = ""
     e.target.blur()
     fetchData(component, e.target.value)
-    e.target.value = ""
   }
 }
 
-export const handleFocus = (input, setSearch) => {
-  setTimeout(() => {
-    if(input === document.activeElement){
-      handleFocus(input)
-    }else{
-      setSearch(false)
-    }
-  }, 1000)
+export const fetchCities = (input) => {
+  const { value } = input.target
+  const where = getWhere(value)
+  const api = CITIES_API.replace("{where}", where)
+
+  fetch(api, citiesRequestConfig)
+    .then(res => res.json())
+    .then(data => console.log("Cites API data:", data))
+    .catch(err => console.log("There has been an error: ", err.message))
 }
