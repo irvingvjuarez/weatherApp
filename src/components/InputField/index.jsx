@@ -12,10 +12,9 @@ const InputField = ({ component }) => {
   const [search, setSearch] = useState(null)
   const [searchOptions, setSearchOptions] = useState([])
   const inputRef = useRef(null)
-  const handleSearch = () => {
-    setSearch(true)
-    inputRef.current.focus()
-  }
+
+  const handleSearch = () => inputRef.current.focus()
+  const handleFocus = () => setSearch(true)
   const handleChange = (e) => fetchCities(e, setSearchOptions)
   const handleFetch = (e) => fetchData(component, e.target.textContent)
   const handleBlur = (e) => setTimeout(() => {
@@ -27,7 +26,7 @@ const InputField = ({ component }) => {
   return(
     <div className={`header__input-field ${search && "large"}`}>
       <HeaderButton
-        specificClassName={search ? "header__inputButton" : "header__searchButton"}
+        specificClassName="header__inputButton"
         description="Search button"
         imgUrl={searchIcon}
         action={ handleSearch }
@@ -36,10 +35,11 @@ const InputField = ({ component }) => {
         ref={inputRef}
         type="text"
         className={`header__input ${search ? "input-display" : "input-hidden"}`}
-        placeholder={search ? "Search a city" : ""}
+        placeholder="Search a city"
         onChange={handleChange}
         onKeyUp={(e) => enterListener(e, component)}
         onBlur={handleBlur}
+        onFocus={handleFocus}
       />
       {(searchOptions.length && search) > 0 && (
         <ul className="header__option-list">
