@@ -35,6 +35,11 @@
 .header__option-list li{
   padding: 6px 12px;
   font-family: var(--mainFont);
+  cursor: pointer;
+}
+.header__option-list li:hover{
+  background-color: rgba(0,0,0,0.5);
+  color: white;
 }
 .header__inputButton{
     width: 15px;

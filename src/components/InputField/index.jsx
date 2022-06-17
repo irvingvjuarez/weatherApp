@@ -6,6 +6,7 @@ import searchIcon from "../../assets/icons/magnifying-glass.svg"
 
 // utils
 import { enterListener, fetchCities } from "./utils"
+import fetchData from "../../utils/fetchData"
 
 const InputField = ({ component }) => {
   const [search, setSearch] = useState(null)
@@ -19,11 +20,14 @@ const InputField = ({ component }) => {
     /**Set focus to the input box */
     input.focus()
     input.addEventListener("blur", () => {
-      setSearch(false)
-      setSearchOptions([])
+      setTimeout(() => {
+        setSearch(false)
+        setSearchOptions([])
+      }, 200)
     })
   }
   const handleChange = (e) => fetchCities(e, setSearchOptions)
+  const handleFetch = (e) => fetchData(component, e.target.textContent)
 
   return(
     <div className={`header__input-field ${search && "large"}`}>
@@ -42,7 +46,10 @@ const InputField = ({ component }) => {
       {(searchOptions.length && search) > 0 && (
         <ul className="header__option-list">
           {searchOptions.map(option =>
-            <li key={option.cityId}>{option.name}</li>
+            <li
+              key={option.cityId}
+              onClick={handleFetch}
+            >{option.name}</li>
           )}
         </ul>
       )}
