@@ -7,10 +7,9 @@ header{
     height: 45px;
     padding: 0 9px;
     color: white;
-    overflow-x: hidden;
-    z-index: 1;
+    z-index: 2;
     box-shadow: var(--mainShadow);
-    
+
     background-color: var(--primaryColor);
 }
 header h3{

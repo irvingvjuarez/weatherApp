@@ -29,12 +29,19 @@ class Home extends React.Component{
     }
   }
 
-  renderContent(){
+  render(){
     const { component } = this.props
-    const { data: { coord, weather, sys, timezone_offset } } = component.state
+    const {
+      loading,
+      error,
+      data: { coord, weather, sys, timezone_offset }
+    } = component.state
 
-    if(screen.width >= 750) return(
-      <React.Fragment>
+    if(loading) return <Loader />
+    if(error) return <ErrorView component={this.props.component} />
+
+    return(
+      <section className="home-main">
         <article className="home-main__info">
           <Weather component={component} />
         </article>
@@ -45,21 +52,6 @@ class Home extends React.Component{
           </div>
           <Map lat={coord.lat} lon={coord.lon}/>
         </article>
-      </React.Fragment>
-    )
-
-    return <Weather component={component} />
-  }
-
-  render(){
-    const { loading, error } = this.props.component.state
-
-    if(loading) return <HomeSkeleton />
-    if(error) return <ErrorView component={this.props.component} />
-
-    return(
-      <section className="home-main">
-        {this.renderContent()}
       </section>
     )
   }
